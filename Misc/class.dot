@@ -7,6 +7,14 @@ ClassDiagram [frame=true framecolor=steelblue label="Plants vs. Zombies"] {
   	private laneNo: int
     public ZombieReachedException(int)
   }
+  class GameSaveException extends Exception{
+  	public GameSaveException(Game)
+  }
+  class GameLostException extends Exception{
+  	public pointsWon: int
+    public GameLostException(int)
+    public getMessage(): String
+  }
   interface Serializable{}
   class NoDefaultUserException extends Exception{
   	public NoDefaultUserException()
@@ -22,10 +30,11 @@ ClassDiagram [frame=true framecolor=steelblue label="Plants vs. Zombies"] {
   	private PvZ : GameManager
     public run()
   }
-  class Grid{
+  class Grid implements Serializable{
   	private tiles : ArrayList "of tiles"
     private lawnMowers: ArrayList
     public getTile(int, int): Tile
+    public getLane(int): ArrayList
     public Grid()
   }
   class GameState implements Serializable{
@@ -35,12 +44,44 @@ ClassDiagram [frame=true framecolor=steelblue label="Plants vs. Zombies"] {
     private gameGrid: Grid
     public GameState(int)
     public executeFrame(): void
+    public spawnSun(): void
+    private addPoints(): void
+    public createNewPlant(int, int, int): void
+    private removePoints(int)
+    private runLawnMower(int)
+    public shovelPlant(int, int)
   }
-  abstract class Character{
+  abstract class Character implements Serializable{
     protected HP: int
+    protected attackPower: int
   }
+  interface PlantTimer{
+  	public static isPlantAvailable(int, int): boolean
+    public static timeLeft(int): int
+  }
+  class PeaShooter extends Plant implements PlantTimer{
+  	public static timeLastCreated: int
+  }
+  class WallNut extends Plant implements PlantTimer{
+  	public static timeLastCreated: int
+  }
+  class CherryBomb extends Plant implements PlantTimer{
+  	public static timeLastCreated: int
+  }
+  class Repeater extends Plant implements PlantTimer{
+  	public static timeLastCreated: int
+  }
+  class Tripeater extends Plant implements PlantTimer{
+  	public static timeLastCreated: int
+  }
+  class Sunflower extends Plant implements PlantTimer{
+  	public static timeLastCreated: int
+    public isSunAvailable(): boolean
+  }
+  
   abstract class Plant extends Character{
-  	private attackPower: int
+    protected tokenCost: int "{readonly}"
+    protected timeCost: int	"{readonly}"
     public attack(Zombie): int
   }
   abstract class Zombie extends Character{
@@ -50,11 +91,24 @@ ClassDiagram [frame=true framecolor=steelblue label="Plants vs. Zombies"] {
     public move(ArrayList): void
     public attack(Plant): int
   }
-  class Tile{
+  class BasicZombie extends Zombie{
+  	public BasicZombie()
+  }
+  class ConeHeadZombie extends Zombie{
+  	public ConeHeadZombie()
+  }
+  class BucketHeadZombie extends Zombie{
+  	public BucketHeadZombie()
+  }
+  class FlagZombie extends Zombie{
+  	public FlagZombie()
+  }
+  class Tile implements Serializable{
     private currPlant: Plant
     private currListOfZombies: ArrayList
     public addZombie(Zombie): void
     public removeZombie(Zombie): void
+    public removeAllZombie(): void
     public addPlant(Plant): void
     public removePlant(Plant): void
     public hasPlant(): boolean
@@ -72,11 +126,15 @@ ClassDiagram [frame=true framecolor=steelblue label="Plants vs. Zombies"] {
     public listOfSavedGames(): ArrayList
     public isResumeAvailable(): boolean
     public exitGame()
+    public saveGame(GameState)
   }
+  GameState -r-> GameSaveException [label="<<throws>>"]
+  GameState -r-> GameLostException [label="<<throws>>"]
   Zombie -r-> ZombieReachedException [label="<<throws>>"]
   Plant -r-> Zombie [label="<<depends>>"]
   Zombie -r-> Plant [label="<<depends>>"]
  	Tile -g-> Plant [label="<<knows>>"]
+  GameSaveException -g-> GameState [label="<<knows>>"]
   Tile -g-> Zombie [label="<<knows>>"]
   Grid -c-> Tile
   Main <-c- GameManager

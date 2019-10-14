@@ -1,0 +1,76 @@
+UseCaseDiagram[frame=true framecolor=steelblue label="Plants vs. Zombies"] {
+  actor NewUser as "New User"
+  actor RegisteredUser as "Registered User"
+  RegisteredUser --> NewUser
+  
+  
+  system PlantVSZombies as "Plants vs. Zombies"{
+    system UserGameManagement as "Game Management"{
+  		system AccountManagement as "Account Management"{
+  			usecase CreateUser as "Create new User"
+      	usecase DisplayUsers as "Display Registered Users"
+      	usecase LoadUser as "Load selected user"
+      	usecase ChangeProfile as "Change Profile"
+      	ChangeProfile -i-> DisplayUsers
+      	ChangeProfile -i-> LoadUser
+ 			}
+  		system GameLauncher as "Game Launcher"{
+      	usecase ResumeGame as "Resume Game" 
+  			usecase PlayGame as "Launch Game"
+    		usecase NewGame as "New Game"
+      	usecase ChooseLevel as "Choose level to Play"
+    		usecase SelectSavedGame as "Select Saved Game"
+      	ResumeGame -e-> NewGame
+    		ResumeGame -i-> SelectSavedGame
+      	NewGame -i-> ChooseLevel
+      
+  		}
+  		usecase Exit as "Exit game"
+      NewGame --> PlayGame
+    	ResumeGame --> PlayGame
+  	}
+  	system Game as "Game"{
+      system GameEngine as "Game Engine"{
+      	usecase AddSunToken as "Add points to profile"
+        usecase UpdatePointsDisplay as "Update Displayed Points"
+        usecase ResetPlantTimer as "Reset plant specific timer"
+        usecase DeductPoints as "Deduct points"
+      }
+      usecase SaveGame as "Save game"
+      usecase RestartLevel as "Restart level"
+      usecase LeaveCurrentGame as "Leave current game"
+      usecase ChangeVolume as "Change Volume"
+      usecase SaveConfirmation as "Confirm leaving without save"
+  		usecase CollectSunToken as "Collect Sun Token"
+      usecase PickShovel as "Select Shovel Tool"
+      usecase SelectTile as "Select a tile"
+      usecase RemovePlant as "Remove Plant"
+      usecase GrowPlant as "Grow a plant"
+      usecase SelectPlant as "Select plant to grow"
+      usecase DisplayPlantCost as "Display token cost of Plant"
+      LeaveCurrentGame -i-> SaveConfirmation
+      CollectSunToken -i-> AddSunToken
+      CollectSunToken -i-> UpdatePointsDisplay
+      RemovePlant -i-> PickShovel
+      RemovePlant -i-> SelectTile
+      GrowPlant -i-> SelectPlant
+      GrowPlant -i-> SelectTile
+      GrowPlant -i-> DeductPoints
+      GrowPlant -i-> ResetPlantTimer
+      GrowPlant -i-> UpdatePointsDisplay
+  	}
+  }
+  NewUser "1" -- "1" CreateUser
+  RegisteredUser -- PlayGame
+  RegisteredUser -- ChangeProfile
+  RegisteredUser -- Exit
+  NewUser -- Exit
+  RegisteredUser "1" -- "*" CollectSunToken
+  RegisteredUser "1" -- "*" RemovePlant
+  RegisteredUser "1" -- "*" GrowPlant
+  RegisteredUser "1" -- "*" DisplayPlantCost
+  RegisteredUser -- SaveGame
+  RegisteredUser -- LeaveCurrentGame
+  RegisteredUser -- RestartLevel
+  RegisteredUser -- ChangeVolume
+}

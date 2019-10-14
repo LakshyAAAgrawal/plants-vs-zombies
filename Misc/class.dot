@@ -1,0 +1,86 @@
+ClassDiagram [frame=true framecolor=steelblue label="Plants vs. Zombies"] {
+  class Exception{
+  	public Exception()
+    public getMessage(): String
+  }
+  class ZombieReachedException extends Exception{
+  	private laneNo: int
+    public ZombieReachedException(int)
+  }
+  interface Serializable{}
+  class NoDefaultUserException extends Exception{
+  	public NoDefaultUserException()
+  }
+  class PlayerProfile implements Serializable{
+  	private final username : String "{readOnly}"
+    private maxLevelReached : int
+    public PlayerProfile(String) : void
+    public getName() : String
+    public getMaxLevelReached(): int
+  }
+  class Main{
+  	private PvZ : GameManager
+    public run()
+  }
+  class Grid{
+  	private tiles : ArrayList "of tiles"
+    private lawnMowers: ArrayList
+    public getTile(int, int): Tile
+    public Grid()
+  }
+  class GameState implements Serializable{
+  	private points: int
+    private currLevel: int
+    private listOfZombies: ArrayList
+    private gameGrid: Grid
+    public GameState(int)
+    public executeFrame(): void
+  }
+  abstract class Character{
+    protected HP: int
+  }
+  abstract class Plant extends Character{
+  	private attackPower: int
+    public attack(Zombie): int
+  }
+  abstract class Zombie extends Character{
+    protected laneNumber: int
+    protected currX: int
+    protected movePerFrame: int
+    public move(ArrayList): void
+    public attack(Plant): int
+  }
+  class Tile{
+    private currPlant: Plant
+    private currListOfZombies: ArrayList
+    public addZombie(Zombie): void
+    public removeZombie(Zombie): void
+    public addPlant(Plant): void
+    public removePlant(Plant): void
+    public hasPlant(): boolean
+  }
+  class GameManager{
+    private currentPlayer: PlayerProfile
+    private gameState: GameState
+    private registeredUsers : HashMap
+    public loadUser(): void
+  	public loadUser(String): void
+    private createNewUser() : PlayerProfile
+    public startGame(): void
+    public startNewGame(): void
+    public resumeGame(): void
+    public listOfSavedGames(): ArrayList
+    public isResumeAvailable(): boolean
+    public exitGame()
+  }
+  Zombie -r-> ZombieReachedException [label="<<throws>>"]
+  Plant -r-> Zombie [label="<<depends>>"]
+  Zombie -r-> Plant [label="<<depends>>"]
+ 	Tile -g-> Plant [label="<<knows>>"]
+  Tile -g-> Zombie [label="<<knows>>"]
+  Grid -c-> Tile
+  Main <-c- GameManager
+  GameManager <-c- PlayerProfile
+  GameManager <-c- GameState
+  GameManager -r-> NoDefaultUserException [label="<<throws>>"]
+}

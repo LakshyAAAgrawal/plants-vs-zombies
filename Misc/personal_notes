@@ -1,10 +1,14 @@
 1. Starting screen - load components
+   1. Ask username if first time
 
 Desired game menu:
 2. Main menu:
    1. new game
    2. Resume game(Grayed out if no saved present)
-      1. Selection screen for saved games.
+      1. Selection screen for saved games(only of current user).
+   3. Change profiles:
+      1. Create new user
+      2. Load user
    3. exit game
    
 In game:
@@ -34,30 +38,6 @@ For game save:
 
 For each save, let the player choose a name. It will be saved as "<Playername>-<chosen name>".
 
-
-
-
-Real game menu
-2. Main menu -
-   a. Adventure
-      1. Level selection menu
-      	 Goes to the game:
-	 1. Checks if game has been saved in the same level, before. If yes:
-	    1. Continue - loads the saved game.
-	    2. Restart - loads fresh game in the selected level
-	    3. Cancel - goes back to level selection menu
-   b. How to play
-   c. Leaderboard
-   d. Achievements
-   e. Change Profiles
-   f. Game options
-      i. volume
-      ii. sound
-      iii. Credits
-      iv. About
-   g. Display name of current logged in user.
-
-
 * Minimum number of levels should be 5, all in day terrain.
 * Minimum number of types of plants available in the game should be 5. The plant types
 will be unlocked (made available to the player) as the game progresses.
@@ -82,3 +62,27 @@ Level 5: Tripeater
 2. Conehead
 3. Buckethead
 4. Flag
+
+
+
+Real game menu
+2. Main menu -
+   a. Adventure
+      1. Level selection menu
+      	 Goes to the game:
+	 1. Checks if game has been saved in the same level, before. If yes:
+	    1. Continue - loads the saved game.
+	    2. Restart - loads fresh game in the selected level
+	    3. Cancel - goes back to level selection menu
+   b. How to play
+   c. Leaderboard
+   d. Achievements
+   e. Change Profiles
+      1. Create new user.
+      2. Load user.
+   f. Game options
+      i. volume
+      ii. sound
+      iii. Credits
+      iv. About
+   g. Display name of current logged in user.

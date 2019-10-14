@@ -1,0 +1,84 @@
+1. Starting screen - load components
+
+Desired game menu:
+2. Main menu:
+   1. new game
+   2. Resume game(Grayed out if no saved present)
+      1. Selection screen for saved games.
+   3. exit game
+   
+In game:
+1. Menu
+   1. Volume
+   2. Back to game
+   3. Restart level
+   4. Save game
+   5. Back to main menu
+2. Suns falling down - add to points(default 25) - display number of points gathered.
+3. Lawnmower
+4. Tiles to place plants
+5. Zombies walking in one by one
+6. Shovel to delete plants
+7. Progress bar showing the number of zombies that have come
+8. List of plants:
+   1. Select plant
+   2. Plant plant - deduct points, reset timer.
+   3. For each plant, a timer. Also, display number of points required to buy.
+
+
+For game save:
+1. level
+2. amount of sun tokens
+3. position and health of plants and lawnmowers
+4. Position and health of zombies
+
+For each save, let the player choose a name. It will be saved as "<Playername>-<chosen name>".
+
+
+
+
+Real game menu
+2. Main menu -
+   a. Adventure
+      1. Level selection menu
+      	 Goes to the game:
+	 1. Checks if game has been saved in the same level, before. If yes:
+	    1. Continue - loads the saved game.
+	    2. Restart - loads fresh game in the selected level
+	    3. Cancel - goes back to level selection menu
+   b. How to play
+   c. Leaderboard
+   d. Achievements
+   e. Change Profiles
+   f. Game options
+      i. volume
+      ii. sound
+      iii. Credits
+      iv. About
+   g. Display name of current logged in user.
+
+
+* Minimum number of levels should be 5, all in day terrain.
+* Minimum number of types of plants available in the game should be 5. The plant types
+will be unlocked (made available to the player) as the game progresses.
+* There should be at least one plant type from each of these categories:
+  a) Shooter: Plants that shoot and injure zombies eg: pea shooter, repeater,
+     threepeater etc.
+  b) Barrier: Plants that protect other plants eg: Wall-nut, Tall-nut etc.
+  c) Sun token producing plants: Plants that produce sun-tokens eg: Sunflower,
+     sun-shroom etc.
+  d) Bomb plants: Plants that are explosive and kill zombies in neighboring cells eg:
+     Cherry Bomb, potato mine etc.
+
+Default set of plants available: Pea shooter, Wallnut, Sunflower, Cherry bomb, Repeater
+Level 1: Pea shooter, Sunflower
+Level 2: Wallnut
+Level 3: Cherry bomb
+Level 4: Repeater
+Level 5: Tripeater
+
+* Zombie types:
+1. Basic
+2. Conehead
+3. Buckethead
+4. Flag

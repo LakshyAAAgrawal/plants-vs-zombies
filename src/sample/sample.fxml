@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+  <children>
+    <AnchorPane minHeight="334.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <ImageView fx:id="bgImage" fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="false" scaleX="1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+          <image>
+            <Image url="@im1.jpeg" />
+          </image>
+        </ImageView>
+        <ImageView fx:id="start_btn" fitHeight="79.25" fitWidth="215.0" layoutX="292.0" layoutY="188.0" onMouseClicked="#start_new_game" pickOnBounds="true" preserveRatio="false">
+          <image>
+            <Image url="@start_button.png" />
+          </image>
+        </ImageView>
+        <ImageView fx:id="load_btn" fitHeight="79.25" fitWidth="215.0" layoutX="292.0" layoutY="274.0" pickOnBounds="true" preserveRatio="false">
+          <image>
+            <Image url="@load_game_btn.png" />
+          </image>
+        </ImageView>
+        <ImageView fx:id="slct_lvl_btn" fitHeight="79.25" fitWidth="215.0" layoutX="292.0" layoutY="355.0" pickOnBounds="true" preserveRatio="false">
+          <image>
+            <Image url="@select_level_btn.png" />
+          </image>
+        </ImageView>
+        <ImageView fx:id="exit_btn" blendMode="SRC_OVER" fitHeight="79.25" fitWidth="215.0" layoutX="292.0" layoutY="439.0" pickOnBounds="true" preserveRatio="false">
+          <image>
+            <Image url="@exit_btn.png" />
+          </image>
+        </ImageView>
+      </children>
+    </AnchorPane>
+  </children>
+</AnchorPane>

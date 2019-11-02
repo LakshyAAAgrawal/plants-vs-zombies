@@ -5,14 +5,14 @@ ClassDiagram [frame=true framecolor=steelblue label="Plants vs. Zombies"] {
   }
   class ZombieReachedException extends Exception{
   	private laneNo: int
-    public ZombieReachedException(int)
+    public ZombieReachedException(a: int)
   }
   class GameSaveException extends Exception{
-  	public GameSaveException(Game)
+  	public GameSaveException(game:Game)
   }
   class GameLostException extends Exception{
   	public pointsWon: int
-    public GameLostException(int)
+    public GameLostException(x:int)
     public getMessage(): String
   }
   interface Serializable{}
@@ -22,7 +22,7 @@ ClassDiagram [frame=true framecolor=steelblue label="Plants vs. Zombies"] {
   class PlayerProfile implements Serializable{
   	private final username : String "{readOnly}"
     private maxLevelReached : int
-    public PlayerProfile(String) : void
+    public PlayerProfile(name:String) : void
     public getName() : String
     public getMaxLevelReached(): int
   }
@@ -33,8 +33,8 @@ ClassDiagram [frame=true framecolor=steelblue label="Plants vs. Zombies"] {
   class Grid implements Serializable{
   	private tiles : ArrayList "of tiles"
     private lawnMowers: ArrayList
-    public getTile(int, int): Tile
-    public getLane(int): ArrayList
+    public getTile(x:int, y:int): Tile
+    public getLane(laneNo:int): ArrayList
     public Grid()
   }
   class GameState implements Serializable{
@@ -42,14 +42,14 @@ ClassDiagram [frame=true framecolor=steelblue label="Plants vs. Zombies"] {
     private currLevel: int
     private listOfZombies: ArrayList
     private gameGrid: Grid
-    public GameState(int)
+    public GameState(level:int)
     public executeFrame(): void
     public spawnSun(): void
     private addPoints(): void
-    public createNewPlant(int, int, int): void
-    private removePoints(int)
-    private runLawnMower(int)
-    public shovelPlant(int, int)
+    public createNewPlant(x:int, y:int, pointsDeduct:int): void
+    private removePoints(x:int)
+    private runLawnMower(x:int)
+    public shovelPlant(x:int, y:int)
   }
   abstract class Character implements Serializable{
     protected HP: int
@@ -57,7 +57,7 @@ ClassDiagram [frame=true framecolor=steelblue label="Plants vs. Zombies"] {
   }
   interface PlantTimer{
   	public static isPlantAvailable(int, int): boolean
-    public static timeLeft(int): int
+    public static timeLeft(time:int): int
   }
   class PeaShooter extends Plant implements PlantTimer{
   	public static timeLastCreated: int
@@ -82,14 +82,14 @@ ClassDiagram [frame=true framecolor=steelblue label="Plants vs. Zombies"] {
   abstract class Plant extends Character{
     protected tokenCost: int "{readonly}"
     protected timeCost: int	"{readonly}"
-    public attack(Zombie): int
+    public attack(zombie:Zombie): int
   }
   abstract class Zombie extends Character{
     protected laneNumber: int
     protected currX: int
     protected movePerFrame: int
-    public move(ArrayList): void
-    public attack(Plant): int
+    public move(lane:ArrayList): void
+    public attack(plant:Plant): int
   }
   class BasicZombie extends Zombie{
   	public BasicZombie()
@@ -106,11 +106,11 @@ ClassDiagram [frame=true framecolor=steelblue label="Plants vs. Zombies"] {
   class Tile implements Serializable{
     private currPlant: Plant
     private currListOfZombies: ArrayList
-    public addZombie(Zombie): void
-    public removeZombie(Zombie): void
+    public addZombie(zombie:Zombie): void
+    public removeZombie(zombie:Zombie): void
     public removeAllZombie(): void
-    public addPlant(Plant): void
-    public removePlant(Plant): void
+    public addPlant(plant:Plant): void
+    public removePlant(plant:Plant): void
     public hasPlant(): boolean
   }
   class GameManager{
@@ -118,7 +118,7 @@ ClassDiagram [frame=true framecolor=steelblue label="Plants vs. Zombies"] {
     private gameState: GameState
     private registeredUsers : HashMap
     public loadUser(): void
-  	public loadUser(String): void
+  	public loadUser(username:String): void
     private createNewUser() : PlayerProfile
     public startGame(): void
     public startNewGame(): void
@@ -126,7 +126,7 @@ ClassDiagram [frame=true framecolor=steelblue label="Plants vs. Zombies"] {
     public listOfSavedGames(): ArrayList
     public isResumeAvailable(): boolean
     public exitGame()
-    public saveGame(GameState)
+    public saveGame(game:GameState)
   }
   GameState -r-> GameSaveException [label="<<throws>>"]
   GameState -r-> GameLostException [label="<<throws>>"]
@@ -135,9 +135,9 @@ ClassDiagram [frame=true framecolor=steelblue label="Plants vs. Zombies"] {
   Zombie -r-> Plant [label="<<depends>>"]
  	Tile -g-> Plant [label="<<knows>>"]
   GameSaveException -g-> GameState [label="<<knows>>"]
-  Tile -g-> Zombie [label="<<knows>>"]
-  Grid -c-> Tile
-  Main <-c- GameManager
+  Tile -g-> Zombie [label="1         <<knows>>      *"]
+  Grid -c-> Tile [label="1               *"]
+  Main <-c- GameManager [label="1               1"]
   GameManager <-c- PlayerProfile
   GameManager <-c- GameState
   GameManager -r-> NoDefaultUserException [label="<<throws>>"]

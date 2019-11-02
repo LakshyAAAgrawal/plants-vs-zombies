@@ -6,23 +6,101 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="PvZ.loadMenuController">
+<AnchorPane layoutX="0.0" layoutY="0.0" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="PvZ.loadMenuController">
   <children>
-    <ScrollPane hbarPolicy="NEVER" layoutX="0.0" layoutY="0.0" pannable="false" prefHeight="600.0" prefWidth="800.0" vbarPolicy="NEVER">
-      <content>
-        <AnchorPane prefHeight="600.0" prefWidth="1103.0">
-          <children>
-            <ImageView fitHeight="600.0" fitWidth="1103.0" pickOnBounds="true" preserveRatio="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-              <image>
-                <Image url="@first_screen.jpeg" />
-              </image>
-            </ImageView>
-            <Button layoutX="760.0" layoutY="59.0" mnemonicParsing="false" text="Button" />
-            <Button layoutX="760.0" layoutY="158.0" mnemonicParsing="false" text="Button" />
-          </children>
-        </AnchorPane>
-      </content>
-    </ScrollPane>
+    <AnchorPane prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+          <image>
+            <Image url="@pvz_night.png" />
+          </image>
+        </ImageView>
+        <ImageView fitHeight="136.06192932128906" fitWidth="228.0" layoutX="315.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+          <image>
+            <Image url="@pvz_logo.png" />
+          </image>
+        </ImageView>
+        <ImageView fitHeight="86.11109924316406" fitWidth="154.99998296675963" layoutX="145.0" layoutY="458.0" pickOnBounds="true" preserveRatio="true">
+          <image>
+            <Image url="@zombie_hand.png" />
+          </image>
+        </ImageView>
+        <ImageView fitHeight="128.00001525878906" fitWidth="230.40003015978587" layoutX="345.0" layoutY="416.0" pickOnBounds="true" preserveRatio="true">
+          <image>
+            <Image url="@zombie_hand.png" />
+          </image>
+        </ImageView>
+        <ImageView fitHeight="150.00001525878906" fitWidth="270.00001567453893" layoutX="542.0" layoutY="408.0" pickOnBounds="true" preserveRatio="true">
+          <image>
+            <Image url="@zombie_hand.png" />
+          </image>
+        </ImageView>
+        <ImageView fitHeight="137.76019287109375" fitWidth="73.97533452616383" layoutX="241.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+          <image>
+            <Image url="@zombie_pic.png" />
+          </image>
+        </ImageView>
+        <ImageView blendMode="SCREEN" disable="false" fitHeight="150.0" fitWidth="200.0" layoutX="530.0" layoutY="93.0" opacity="1.0" pickOnBounds="true" preserveRatio="true" rotate="0.0" smooth="true">
+          <image>
+            <Image url="@zombie_dance.gif" />
+          </image>
+        </ImageView>
+        <ScrollPane blendMode="OVERLAY" hvalue="0.0" layoutX="200.0" layoutY="243.0" opacity="1.0" prefHeight="128.0" prefWidth="569.0" vbarPolicy="NEVER">
+          <content>
+            <GridPane prefHeight="105.0" prefWidth="700.0">
+              <children>
+                <ImageView fitHeight="83.0" fitWidth="119.66666412353516" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                  <image>
+                    <Image url="@lawn.png" />
+                  </image>
+                </ImageView>
+                <Label prefWidth="119.6666259765625" text="Saved Game 1" textAlignment="CENTER" textFill="BLACK" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                  <font>
+                    <Font name="System Bold" size="13.0" fx:id="x1" />
+                  </font>
+                </Label>
+                <ImageView fitHeight="83.0" fitWidth="119.66666412353516" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                  <image>
+                    <Image url="@lawn.png" />
+                  </image>
+                </ImageView>
+                <Label font="$x1" prefWidth="119.6666259765625" text="Saved Game 2" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Label font="$x1" prefWidth="119.6666259765625" text="Saved Game 3" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                <Label font="$x1" prefWidth="119.6666259765625" text="Saved Game 4" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                <Label prefWidth="119.6666259765625" text="Saved Game 5" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                <ImageView fitHeight="83.0" fitWidth="119.66666412353516" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                  <image>
+                    <Image url="@lawn.png" />
+                  </image>
+                </ImageView>
+                <ImageView fitHeight="83.0" fitWidth="119.66666412353516" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="3" GridPane.rowIndex="0">
+                  <image>
+                    <Image url="@lawn.png" />
+                  </image>
+                </ImageView>
+                <ImageView fitHeight="83.0" fitWidth="119.66666412353516" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="4" GridPane.rowIndex="0">
+                  <image>
+                    <Image url="@lawn.png" />
+                  </image>
+                </ImageView>
+              </children>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="79.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+            </GridPane>
+          </content>
+        </ScrollPane>
+      </children>
+    </AnchorPane>
   </children>
 </AnchorPane>

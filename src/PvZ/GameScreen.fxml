@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="PvZ.gameScreenController">
+  <children>
+    <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" hvalue="0.0" prefHeight="600.0" prefWidth="800.0" vbarPolicy="NEVER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <content>
+        <AnchorPane prefHeight="600.0" prefWidth="1103.0">
+          <children>
+            <ImageView fitHeight="600.0" fitWidth="1103.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <image>
+                <Image url="@lawn.png" />
+              </image>
+            </ImageView>
+            <GridPane layoutX="150.0" layoutY="84.0" prefHeight="502.0" prefWidth="636.0">
+              <children>
+                <ImageView fitHeight="92.6000832153295" fitWidth="72.00000762939453" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                  <image>
+                    <Image url="@wallnut.gif" />
+                  </image>
+                </ImageView>
+                <ImageView id="pea_shooter" fitHeight="64.09034729003906" fitWidth="62.08752450221818" pickOnBounds="true" preserveRatio="true" smooth="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <image>
+                    <Image url="@pea_shooter.gif" preserveRatio="true" smooth="true" />
+                  </image>
+                </ImageView>
+              </children>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="76.5999755859375" minWidth="10.0" prefWidth="49.40003662109375" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.6" minWidth="10.0" prefWidth="64.6000244140625" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.6" minWidth="10.0" prefWidth="59.600024414062545" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="106.60003662109375" minWidth="10.0" prefWidth="73.60003662109375" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.39997558593745" minWidth="0.0" prefWidth="56.399975585937455" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="122.0" minWidth="10.0" prefWidth="68.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="124.00003662109373" minWidth="10.0" prefWidth="62.00003662109373" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.5999755859375" minWidth="5.799963378906284" prefWidth="63.799963378906284" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.79995117187502" minWidth="10.0" prefWidth="64.79990234375003" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="106.59990234375005" minWidth="8.800048828125" prefWidth="80.59990234375005" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="108.00000610351563" minHeight="10.0" prefHeight="100.79999389648438" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="167.8" minHeight="10.0" prefHeight="100.80000610351561" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="122.400048828125" minHeight="10.0" prefHeight="108.4000244140625" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="130.40001220703124" minHeight="10.0" prefHeight="83.5999755859375" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="110.19999999999999" minHeight="10.0" prefHeight="110.19999999999999" vgrow="SOMETIMES" />
+              </rowConstraints>
+            </GridPane>
+            <GridPane layoutX="-151.0" layoutY="0.0" prefHeight="166.0" prefWidth="62.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="27.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="27.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="28.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="28.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="28.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="28.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+            </GridPane>
+            <ImageView fitHeight="92.60000610351562" fitWidth="57.69692796677817" layoutX="892.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
+              <image>
+                <Image url="@basic_zombie.gif" />
+              </image>
+            </ImageView>
+            <ImageView fitHeight="92.60000610351562" fitWidth="57.69692796677817" layoutX="902.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
+              <image>
+                <Image url="@basic_zombie.gif" />
+              </image>
+            </ImageView>
+          </children>
+        </AnchorPane>
+      </content>
+    </ScrollPane>
+  </children>
+</AnchorPane>

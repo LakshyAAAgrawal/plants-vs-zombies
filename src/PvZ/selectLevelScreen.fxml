@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane layoutX="0.0" layoutY="0.0" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="PvZ.selectLevelScreenController">
+  <children>
+    <AnchorPane prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+          <image>
+            <Image url="@pvz_night.png" />
+          </image>
+        </ImageView>
+        <ImageView fitHeight="136.06192932128906" fitWidth="228.0" layoutX="315.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+          <image>
+            <Image url="@pvz_logo.png" />
+          </image>
+        </ImageView>
+        <GridPane alignment="CENTER" blendMode="SRC_OVER" gridLinesVisible="false" layoutX="195.0" layoutY="217.0" prefHeight="145.0" prefWidth="573.0">
+          <children>
+            <ImageView fx:id="level1Btn" fitHeight="103.96211242675781" fitWidth="111.20796064898789" onMouseClicked="#startLevel1" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER">
+              <image>
+                <Image url="@button_stone_l1.png" />
+              </image>
+            </ImageView>
+            <ImageView fx:id="level2Btn" fitHeight="103.96211242675781" fitWidth="111.20796064898789" onMouseClicked="#startLevel2" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="0">
+              <image>
+                <Image url="@button_stone_l2.png" />
+              </image>
+            </ImageView>
+            <ImageView fx:id="level3Btn" fitHeight="103.96211242675781" fitWidth="111.20796064898789" onMouseClicked="#startLevel3" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="0">
+              <image>
+                <Image url="@button_stone_l3.png" />
+              </image>
+            </ImageView>
+            <ImageView fx:id="level4Btn" fitHeight="103.96211242675781" fitWidth="111.20796064898789" onMouseClicked="#startLevel4" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="0">
+              <image>
+                <Image url="@button_stone_l4.png" />
+              </image>
+            </ImageView>
+            <ImageView fx:id="level5Btn" fitHeight="103.96211242675781" fitWidth="111.20796064898789" onMouseClicked="#startLevel5" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="0">
+              <image>
+                <Image url="@button_stone_l5.png" />
+              </image>
+            </ImageView>
+          </children>
+          <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          </columnConstraints>
+          <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          </rowConstraints>
+        </GridPane>
+        <ImageView fitHeight="86.11109924316406" fitWidth="154.99998296675963" layoutX="145.0" layoutY="458.0" pickOnBounds="true" preserveRatio="true">
+          <image>
+            <Image url="@zombie_hand.png" />
+          </image>
+        </ImageView>
+        <ImageView fitHeight="128.00001525878906" fitWidth="230.40003015978587" layoutX="345.0" layoutY="416.0" pickOnBounds="true" preserveRatio="true">
+          <image>
+            <Image url="@zombie_hand.png" />
+          </image>
+        </ImageView>
+        <ImageView fitHeight="194.11109924316406" fitWidth="349.3999786376953" layoutX="512.0" layoutY="364.0" pickOnBounds="true" preserveRatio="true">
+          <image>
+            <Image url="@zombie_hand.png" />
+          </image>
+        </ImageView>
+        <ImageView fitHeight="137.76019287109375" fitWidth="73.97533452616383" layoutX="241.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+          <image>
+            <Image url="@zombie_pic.png" />
+          </image>
+        </ImageView>
+        <ImageView blendMode="SCREEN" disable="false" fitHeight="150.0" fitWidth="200.0" layoutX="530.0" layoutY="93.0" opacity="1.0" pickOnBounds="true" preserveRatio="true" rotate="0.0" smooth="true">
+          <image>
+            <Image url="@zombie_dance.gif" />
+          </image>
+        </ImageView>
+      </children>
+    </AnchorPane>
+  </children>
+</AnchorPane>

@@ -1,24 +1,17 @@
-package sample;
+package PvZ;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.transform.Scale;
 import javafx.stage.Stage;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        //System.out.println(root.getId());
-        //Scene sc = new Scene(root);
-        //System.out.println(System.getProperties());
-        //sc.getStylesheets().addAll(this.getClass().getResource("style_screen1.css").toExternalForm());
-
-        primaryStage.setTitle("FXML+JAVAFX");
+        Parent root = FXMLLoader.load(getClass().getResource("start_menu.fxml"));
+        primaryStage.setTitle("Plants vs Zombies");
         primaryStage.setScene(new Scene(root, 800, 600));
         primaryStage.show();
     }

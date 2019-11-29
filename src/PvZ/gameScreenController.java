@@ -21,6 +21,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.animation.PathTransition;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
+import javafx.scene.shape.LineTo;
 import sun.security.provider.Sun;
 
 import java.util.Random;
@@ -48,12 +49,15 @@ class LawnMowerMover extends AnimationTimer{
         }
     }
 }
-/*
-class SunMover extends Application{
+
+/*class SunMover extends Application{
     @Override
     public void start(Stage stage){
         Path path=new Path();
         MoveTo moveTo=new MoveTo();
+        LineTo line1=new LineTo(390,-213);
+        LineTo line2=new LineTo(325,-213);
+
     }
 }*/
 
@@ -67,7 +71,8 @@ class SunMover extends AnimationTimer{
     @Override
     public void handle(long now) {
         double currVal = sun.getLayoutY();
-        double newVal = currVal + 2;
+        double newVal = currVal + 1;
+        for(int xx=0; xx<1000000000; xx++);
         if (t==100){
             sun.setVisible(false);
             sun.setLayoutY(-213);
@@ -374,7 +379,7 @@ public class gameScreenController {
         suns.add(fall_sun8);
         suns.add(fall_sun9);
 
-        new AnimationTimer(){
+       new AnimationTimer(){
             private int t=0;
             private int sun_num=0;
 

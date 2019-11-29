@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PvZ.gameScreenController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="PvZ.gameScreenController">
   <children>
     <ScrollPane fx:id="MenuScrollPane" hbarPolicy="NEVER" hmax="0.0" prefHeight="600.0" prefWidth="800.0" vbarPolicy="NEVER" vvalue="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <content>
@@ -25,7 +30,7 @@
               <content>
                 <AnchorPane fx:id="gameScreenPane" prefHeight="600.0" prefWidth="1103.0">
                   <children>
-                    <ImageView fitHeight="600.0" fitWidth="1103.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <ImageView fx:id="screen" fitHeight="600.0" fitWidth="1103.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                       <image>
                         <Image url="@lawn.png" />
                       </image>
@@ -73,51 +78,6 @@
                         <Image url="@basic_zombie.gif" />
                       </image>
                     </ImageView>
-                    <GridPane layoutX="14.0" layoutY="13.0" prefHeight="374.0" prefWidth="71.00009999999747">
-                      <children>
-                        <ImageView fitHeight="60.229984321970605" fitWidth="59.5086669921875" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="1">
-                          <image>
-                            <Image url="@fade_peashooter.jpg" />
-                          </image>
-                        </ImageView>
-                        <ImageView fitHeight="60.229984321970605" fitWidth="59.5086669921875" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="2">
-                          <image>
-                            <Image url="@fade_cherrybomb.jpg" />
-                          </image>
-                        </ImageView>
-                        <ImageView fitHeight="60.229984321970605" fitWidth="59.5086669921875" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="3">
-                          <image>
-                            <Image url="@fade_tripeater.jpg" />
-                          </image>
-                        </ImageView>
-                        <ImageView fx:id="sunflower" fitHeight="60.229984321970605" fitWidth="59.5086669921875" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="4">
-                          <image>
-                            <Image url="@menu_sunflower1.png" />
-                          </image>
-                        </ImageView>
-                        <ImageView fitHeight="60.229984321970605" fitWidth="59.5086669921875" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="5">
-                          <image>
-                            <Image url="@fade_repeater.jpg" />
-                          </image>
-                        </ImageView>
-                        <ImageView fx:id="menu_wallnut" fitHeight="60.229984321970605" fitWidth="59.5086669921875" pickOnBounds="true" preserveRatio="true">
-                          <image>
-                            <Image url="@menu_wallnut1.png" />
-                          </image>
-                        </ImageView>
-                      </children>
-                      <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="58.0" minWidth="10.0" prefWidth="32.0" />
-                      </columnConstraints>
-                      <rowConstraints>
-                        <RowConstraints maxHeight="186.0" minHeight="0.0" prefHeight="29.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="271.0" minHeight="0.0" prefHeight="41.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="271.0" minHeight="0.0" prefHeight="35.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="271.0" minHeight="0.0" prefHeight="38.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="271.0" minHeight="0.0" prefHeight="38.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="271.0" minHeight="0.0" prefHeight="38.0" vgrow="SOMETIMES" />
-                      </rowConstraints>
-                    </GridPane>
                     <ImageView id="zombie2" fx:id="zombie3" fitHeight="92.60000610351562" fitWidth="57.69692796677817" layoutX="939.0" layoutY="284.0" pickOnBounds="true" preserveRatio="true">
                       <image>
                         <Image url="@basic_zombie.gif" />
@@ -192,46 +152,46 @@
                         <Image url="@sun-transparent-background-sun_with_transparent_background.png" />
                       </image>
                     </ImageView>
-                              <ImageView fx:id="fall_sun2" fitHeight="64.30941009521484" fitWidth="67.16387602433026" layoutX="260.0" layoutY="-213.0" onMouseClicked="#collect_sun">
-                                 <image>
-                                    <Image url="@sun-transparent-background-sun_with_transparent_background.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fx:id="fall_sun3" fitHeight="64.30941009521484" fitWidth="67.16387602433026" layoutX="325.0" layoutY="-213.0" onMouseClicked="#collect_sun">
-                                 <image>
-                                    <Image url="@sun-transparent-background-sun_with_transparent_background.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fx:id="fall_sun4" fitHeight="64.30941009521484" fitWidth="67.16387602433026" layoutX="390.0" layoutY="-213.0" onMouseClicked="#collect_sun">
-                                 <image>
-                                    <Image url="@sun-transparent-background-sun_with_transparent_background.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fx:id="fall_sun5" fitHeight="64.30941009521484" fitWidth="67.16387602433026" layoutX="455.0" layoutY="-213.0" onMouseClicked="#collect_sun">
-                                 <image>
-                                    <Image url="@sun-transparent-background-sun_with_transparent_background.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fx:id="fall_sun6" fitHeight="64.30941009521484" fitWidth="67.16387602433026" layoutX="520.0" layoutY="-213.0" onMouseClicked="#collect_sun">
-                                 <image>
-                                    <Image url="@sun-transparent-background-sun_with_transparent_background.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fx:id="fall_sun7" fitHeight="64.30941009521484" fitWidth="67.16387602433026" layoutX="585.0" layoutY="-213.0" onMouseClicked="#collect_sun">
-                                 <image>
-                                    <Image url="@sun-transparent-background-sun_with_transparent_background.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fx:id="fall_sun8" fitHeight="64.30941009521484" fitWidth="67.16387602433026" layoutX="650.0" layoutY="-213.0" onDragDone="#collect_sun" onMouseClicked="#collect_sun" onTouchPressed="#collect_sun">
-                                 <image>
-                                    <Image url="@sun-transparent-background-sun_with_transparent_background.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fx:id="fall_sun9" fitHeight="64.30941009521484" fitWidth="67.16387602433026" layoutX="715.0" layoutY="-213.0" onDragDone="#collect_sun" onMouseClicked="#collect_sun" onTouchPressed="#collect_sun">
-                                 <image>
-                                    <Image url="@sun-transparent-background-sun_with_transparent_background.png" />
-                                 </image>
-                              </ImageView>
+                    <ImageView fx:id="fall_sun2" fitHeight="64.30941009521484" fitWidth="67.16387602433026" layoutX="260.0" layoutY="-213.0" onMouseClicked="#collect_sun">
+                      <image>
+                        <Image url="@sun-transparent-background-sun_with_transparent_background.png" />
+                      </image>
+                    </ImageView>
+                    <ImageView fx:id="fall_sun3" fitHeight="64.30941009521484" fitWidth="67.16387602433026" layoutX="325.0" layoutY="-213.0" onMouseClicked="#collect_sun">
+                      <image>
+                        <Image url="@sun-transparent-background-sun_with_transparent_background.png" />
+                      </image>
+                    </ImageView>
+                    <ImageView fx:id="fall_sun4" fitHeight="64.30941009521484" fitWidth="67.16387602433026" layoutX="390.0" layoutY="-213.0" onMouseClicked="#collect_sun">
+                      <image>
+                        <Image url="@sun-transparent-background-sun_with_transparent_background.png" />
+                      </image>
+                    </ImageView>
+                    <ImageView fx:id="fall_sun5" fitHeight="64.30941009521484" fitWidth="67.16387602433026" layoutX="455.0" layoutY="-213.0" onMouseClicked="#collect_sun">
+                      <image>
+                        <Image url="@sun-transparent-background-sun_with_transparent_background.png" />
+                      </image>
+                    </ImageView>
+                    <ImageView fx:id="fall_sun6" fitHeight="64.30941009521484" fitWidth="67.16387602433026" layoutX="520.0" layoutY="-213.0" onMouseClicked="#collect_sun">
+                      <image>
+                        <Image url="@sun-transparent-background-sun_with_transparent_background.png" />
+                      </image>
+                    </ImageView>
+                    <ImageView fx:id="fall_sun7" fitHeight="64.30941009521484" fitWidth="67.16387602433026" layoutX="585.0" layoutY="-213.0" onMouseClicked="#collect_sun">
+                      <image>
+                        <Image url="@sun-transparent-background-sun_with_transparent_background.png" />
+                      </image>
+                    </ImageView>
+                    <ImageView fx:id="fall_sun8" fitHeight="64.30941009521484" fitWidth="67.16387602433026" layoutX="650.0" layoutY="-213.0" onDragDone="#collect_sun" onMouseClicked="#collect_sun" onTouchPressed="#collect_sun">
+                      <image>
+                        <Image url="@sun-transparent-background-sun_with_transparent_background.png" />
+                      </image>
+                    </ImageView>
+                    <ImageView fx:id="fall_sun9" fitHeight="64.30941009521484" fitWidth="67.16387602433026" layoutX="715.0" layoutY="-213.0" onDragDone="#collect_sun" onMouseClicked="#collect_sun" onTouchPressed="#collect_sun">
+                      <image>
+                        <Image url="@sun-transparent-background-sun_with_transparent_background.png" />
+                      </image>
+                    </ImageView>
                   </children>
                 </AnchorPane>
               </content>

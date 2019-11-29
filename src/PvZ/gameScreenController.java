@@ -180,9 +180,15 @@ public class gameScreenController {
         GameState gamestate = new GameState(gameScreenPane, level);
         gamestate.createGraphicObjects();
         new AnimationTimer() {
+            private long lastUpdate ;
             @Override
             public void handle(long now) {
-                gamestate.advance_one_frame();
+                long elapsedNanoSeconds = now - lastUpdate ;
+                long numFrames = (elapsedNanoSeconds*60) / 1_000_000_000 ;
+                for(int i = 0; i < numFrames; i++){
+                    gamestate.advance_one_frame();
+                }
+                lastUpdate = now ;
             }
         }.start();
     }

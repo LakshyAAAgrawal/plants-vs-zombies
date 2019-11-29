@@ -6,7 +6,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 public class PlantFactory {
-    public Plant createPlant(String plantName){
+    public Plant createPlant(String plantType){
         if(plantType.equals("sunflower")){
             return new Sunflower();
         }else if(plantType.equals("peashooter")){

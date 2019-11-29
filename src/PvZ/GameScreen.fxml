@@ -35,26 +35,6 @@
                         <Image url="@lawn.png" />
                       </image>
                     </ImageView>
-                    <GridPane fx:id="lawn_grid" gridLinesVisible="false" layoutX="194.0" layoutY="83.0" prefHeight="503.0" prefWidth="592.0">
-                      <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.6" minWidth="10.0" prefWidth="70.6000244140625" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.6" minWidth="10.0" prefWidth="59.600024414062545" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="106.60003662109375" minWidth="10.0" prefWidth="68.60003662109375" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="106.60003662109375" minWidth="10.0" prefWidth="65.60003662109375" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.39997558593745" minWidth="0.0" prefWidth="71.39997558593745" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="122.0" minWidth="6.0" prefWidth="55.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="124.00003662109373" minWidth="1.0000366210937273" prefWidth="62.00003662109373" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="124.00003662109373" minWidth="1.0000366210937273" prefWidth="62.000036621093784" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.5999755859375" minWidth="5.799963378906284" prefWidth="78.79996337890623" />
-                      </columnConstraints>
-                      <rowConstraints>
-                        <RowConstraints maxHeight="108.00000610351563" minHeight="10.0" prefHeight="100.79999389648438" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="167.8" minHeight="10.0" prefHeight="100.80000610351561" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="122.400048828125" minHeight="10.0" prefHeight="108.4000244140625" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="130.40001220703124" minHeight="10.0" prefHeight="83.5999755859375" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="110.19999999999999" minHeight="10.0" prefHeight="110.19999999999999" vgrow="SOMETIMES" />
-                      </rowConstraints>
-                    </GridPane>
                     <GridPane layoutX="-151.0" layoutY="0.0" prefHeight="166.0" prefWidth="62.0">
                       <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

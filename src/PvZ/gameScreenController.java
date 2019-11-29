@@ -176,7 +176,6 @@ public class gameScreenController {
                 }
             }
         }.start();
-
         GameState gamestate = new GameState(gameScreenPane, level);
         gamestate.createGraphicObjects();
         new AnimationTimer() {

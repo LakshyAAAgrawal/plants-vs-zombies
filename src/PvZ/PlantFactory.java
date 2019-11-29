@@ -7,18 +7,21 @@ import javafx.scene.input.MouseEvent;
 
 public class PlantFactory {
     public Plant createPlant(String plantType){
+        Plant toRet = null;
         if(plantType.equals("sunflower")){
-            return new Sunflower();
+            toRet = new Sunflower(0,0);
         }else if(plantType.equals("peashooter")){
-            return new Peashooter();
+            toRet = new Peashooter(0,0);
         }else if(plantType.equals("walnut")){
-            return new Walnut();
+            toRet = new Walnut(0,0);
         }else if(plantType.equals("cherrybomb")){
-            return new Cherrybomb();
+            toRet = new Cherrybomb(0,0);
         }else if(plantType.equals("repeater")){
-            return new Repeater;
+            toRet = new Repeater(0,0);
         }else if(plantType.equals("tripeater")){
-            return new Tripeater;
+            toRet = new Tripeater(0,0);
         }
+        toRet.createGraphicObject();
+        return toRet;
     }
 }

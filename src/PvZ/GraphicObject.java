@@ -17,13 +17,12 @@ public abstract class GraphicObject implements Serializable {
         this.x=x;
         this.y=y;
     }
-    public void createGraphicObject(Pane parent){
+    public void createGraphicObject(){
         try {
             image = new ImageView(new Image(getClass().getResource(image_media).toURI().toString())); //try catch
         }
         catch (URISyntaxException e) {
             e.printStackTrace();
         }
-        parent.getChildren().add(image);
     }
 }

@@ -1,5 +1,6 @@
 package PvZ;
 
+import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -18,12 +19,46 @@ enum MouseInputStates {
 public class GameState implements Serializable {
     private transient AnchorPane baseAnchorPane;
     private int level;
+    private PlantMenuItem activatedPlant;
+    private int numSunTokens;
+    LawnGrid lawnGrid;
+
     public GameState(AnchorPane mainAnchor, int level){
         this.baseAnchorPane = mainAnchor;
         this.level = level;
+        this.lawnGrid = new LawnGrid(mainAnchor);
+        this.numSunTokens = 150;
+
         mainAnchor.setOnMouseClicked(e -> {
+//            System.out.println("x: " + e.getSceneX() + ", y: " + e.getSceneY());
+//            System.out.println("y index: " + lawnGrid.getYindex(e.getSceneY()) + ", x index: " + lawnGrid.getXindex(e.getSceneX(), lawnGrid.getYindex(e.getSceneY())));
+//            if(true)return;
             if(mouseInputState == MouseInputStates.PLANTSET){
-                
+                System.out.println("In Plantset");
+                if(lawnGrid.withinGrid(e.getSceneX(), e.getSceneY())){
+                    if(numSunTokens >= activatedPlant.sunCost){
+                        numSunTokens = numSunTokens - activatedPlant.sunCost;
+                        lawnGrid.addPlant(activatedPlant.getNewPlant(), e.getSceneX(), e.getSceneY());
+                        activatedPlant.setInactive();
+                        new AnimationTimer() {
+                            int x = 0;
+                            @Override
+                            public void handle(long now) {
+                                x++;
+                                if (x > 300) {
+                                    activatedPlant.setActive();
+                                    this.stop();
+                                }
+                            }
+                        }.start();
+                    }else{
+                        mouseInputState = MouseInputStates.NORMAL;
+                        activatedPlant.setActive();
+                    }
+                }else{
+//                    mouseInputState = MouseInputStates.NORMAL;
+//                    activatedPlant.setActive();
+                }
             }
         });
     }
@@ -71,8 +106,8 @@ public class GameState implements Serializable {
 
     }
 
-    public void setPlantSetMode(Plant plant) {
+    public void setPlantSetMode(PlantMenuItem plant) {
         this.mouseInputState = MouseInputStates.PLANTSET;
-
+        this.activatedPlant = plant;
     }
 }

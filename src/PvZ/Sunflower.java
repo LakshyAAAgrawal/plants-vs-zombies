@@ -38,6 +38,7 @@ public class Sunflower extends Plant implements Serializable {
 
         sun.setOnMouseClicked(e -> {
             this.sun_setX_Y(100,-213);
+            gameScreenController.score.setText(gameScreenController.score.getText()+25);
         });
 
         if (give_sun_timer==300) {

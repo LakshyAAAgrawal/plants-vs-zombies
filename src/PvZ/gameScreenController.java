@@ -1,6 +1,10 @@
 package PvZ;
 
+import javafx.application.Application;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 import javafx.animation.AnimationTimer;
+import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.ImageCursor;
@@ -14,6 +18,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.animation.PathTransition;
+import javafx.scene.shape.MoveTo;
+import javafx.scene.shape.Path;
 import sun.security.provider.Sun;
 
 import java.util.Random;
@@ -41,6 +48,14 @@ class LawnMowerMover extends AnimationTimer{
         }
     }
 }
+/*
+class SunMover extends Application{
+    @Override
+    public void start(Stage stage){
+        Path path=new Path();
+        MoveTo moveTo=new MoveTo();
+    }
+}*/
 
 class SunMover extends AnimationTimer{
     private ImageView sun;
@@ -138,10 +153,10 @@ class Menu extends AnimationTimer{
         }
     }
 }
-
+/*
 class Wallnut extends Menu{
     private int price=50;
-    public Wallnut(ImageView menu_wallnut){
+    public Wallnut(){
         super("menu_wallnut1.png","fade_wallnut.jpg");
         try {
             ImageView fade_plant = new ImageView(new Image(getClass().getResource("fade_wallnut.jpg").toURI().toString())); //try catch
@@ -149,11 +164,11 @@ class Wallnut extends Menu{
         catch (URISyntaxException e) {
             e.printStackTrace();
         }
-            gameScreenController.menu_wallnut.setImage(fade_plant.getImage());
+        gameScreenController.menu_wallnut.setImage(fade_plant.getImage());
         this.timer=15;
     }
 }
-
+*/
 /*class Peashooter extends Menu{
     private int price=100;
 
@@ -374,7 +389,7 @@ public class gameScreenController {
             }
         }.start();
 
-        new Wallnut(menu_wallnut);
+//        new Wallnut();
         //new SunMover(fall_sun1).start();
         LawnMowerMover lawnMowerMover1 = new LawnMowerMover(lawnmower1);
         LawnMowerMover lawnMowerMover3 = new LawnMowerMover(lawnmower3);

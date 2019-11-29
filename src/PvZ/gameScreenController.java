@@ -20,6 +20,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.animation.PathTransition;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
+import javafx.scene.shape.LineTo;
 import sun.security.provider.Sun;
 
 import java.util.Random;

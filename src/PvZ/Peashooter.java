@@ -1,7 +1,5 @@
 package PvZ;
 
-import javafx.scene.layout.Pane;
-
 import java.io.Serializable;
 
 public class Peashooter extends Plant implements Serializable {

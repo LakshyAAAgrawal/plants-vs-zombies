@@ -1,24 +1,24 @@
 package PvZ;
 
+import javafx.application.Application;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 import javafx.animation.AnimationTimer;
+import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
+import javafx.scene.ImageCursor;
+import javafx.animation.PathTransition;
+import javafx.scene.shape.MoveTo;
+import javafx.scene.shape.Path;
+import javafx.scene.shape.LineTo;
+import sun.security.provider.Sun;
 
+import java.util.Random;
+import java.util.ArrayList;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Random;
 import java.util.ResourceBundle;
 
 class LawnMowerMover extends AnimationTimer{
@@ -39,16 +39,19 @@ class LawnMowerMover extends AnimationTimer{
         }
     }
 }
-/*
+
 class SunMover extends Application{
     @Override
     public void start(Stage stage){
         Path path=new Path();
         MoveTo moveTo=new MoveTo();
-    }
-}*/
+        LineTo line1=new LineTo(390,-213);
+        LineTo line2=new LineTo(325,-213);
 
-class SunMover extends AnimationTimer{
+    }
+}
+
+/*class SunMover extends AnimationTimer{
     private ImageView sun;
     private int t=0;
     public SunMover(ImageView sun){
@@ -365,7 +368,11 @@ public class gameScreenController {
         suns.add(fall_sun8);
         suns.add(fall_sun9);
 
+<<<<<<< HEAD
         new AnimationTimer(){
+=======
+      /*  new AnimationTimer(){
+>>>>>>> c80d5c66a17bdb835f40099a7e6be876db32b5a4
             private int t=0;
             private int sun_num=0;
 
@@ -378,7 +385,11 @@ public class gameScreenController {
                 }
                 t++;
             }
+<<<<<<< HEAD
         }.start();
+=======
+        }.start(); */
+>>>>>>> c80d5c66a17bdb835f40099a7e6be876db32b5a4
 
 //        new Wallnut();
         //new SunMover(fall_sun1).start();

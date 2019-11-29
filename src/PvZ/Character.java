@@ -5,8 +5,8 @@ import java.io.Serializable;
 public abstract class Character extends GraphicObject implements Serializable {
     protected int HP;
     protected final int attack_power;
-    public Character(int HP,int attack_power,String img){
-        super(img);
+    public Character(int HP,int attack_power,String img,int x,int y){
+        super(img,x,y);
         this.HP=HP;
         this.attack_power=attack_power;
     }

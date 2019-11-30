@@ -14,7 +14,7 @@ import java.io.Serializable;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
-enum MouseInputStates {
+enum MouseInputStates implements Serializable{
     PLANTSET, NORMAL, SHOVEL;
 }
 
@@ -32,6 +32,7 @@ public class GameState implements Serializable {
     PeaMover peaMover;
     SunflowerSunSpawner sunflowerSunSpawner;
     ArrayList<Updatable> observers;
+    private MouseInputStates mouseInputState = MouseInputStates.NORMAL;
 
     public GameState(AnchorPane mainAnchor, int level, Label timer, Label score, ImageView[] lawnmowers){
         this.baseAnchorPane = mainAnchor;
@@ -84,10 +85,11 @@ public class GameState implements Serializable {
             }
         });
     }
-    private MouseInputStates mouseInputState = MouseInputStates.NORMAL;
 
     public void createGraphicObjects() throws URISyntaxException {
         createPlantBuyMenu();
+        mouseInputState = MouseInputStates.NORMAL;
+        activatedPlant = null;
         for(int i = 0; i < 5; i++){
             for(int j = 0; j < 9; j++){
                 Plant plant = lawnGrid.plantsGrid[i][j];
@@ -194,5 +196,36 @@ public class GameState implements Serializable {
         this.timer = timer;
         this.score = score;
         this.lawnGrid.lawnmowers = lawnmowers;
+        this.lawnGrid.mainPane = gameScreenPane;
+        baseAnchorPane.setOnMouseClicked(e -> {
+            if(mouseInputState == MouseInputStates.PLANTSET){
+                if(lawnGrid.withinGrid(e.getSceneX(), e.getSceneY())){
+                    if(activatedPlant != null && activatedPlant.clickable && numSunTokens >= activatedPlant.sunCost){
+                        if(lawnGrid.addPlant(activatedPlant.getNewPlant(), e.getSceneX(), e.getSceneY())){
+                            numSunTokens = numSunTokens - activatedPlant.sunCost;
+                            activatedPlant.setInactive();
+                            new AnimationTimer() {
+                                int x = 0;
+                                PlantMenuItem currPlant = activatedPlant;
+                                @Override
+                                public void handle(long now) {
+                                    x++;
+                                    if (x > 300) {
+                                        currPlant.setActive();
+                                        this.stop();
+                                    }
+                                }
+                            }.start();
+                        }
+                    }else{
+                        mouseInputState = MouseInputStates.NORMAL;
+                        //activatedPlant.setActive();
+                    }
+                }else{
+//                    mouseInputState = MouseInputStates.NORMAL;
+//                    activatedPlant.setActive();
+                }
+            }
+        });
     }
 }

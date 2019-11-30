@@ -7,7 +7,7 @@ public class Pea extends GraphicObject implements Serializable {
     boolean isActive;
     public Pea(double x, double y) {
         super("PeaFrustration.png", x, y);
-        this.attackStat = 5;
+        this.attackStat = 15;
         this.isActive = true;
     }
 

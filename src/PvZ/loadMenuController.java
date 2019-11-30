@@ -40,39 +40,6 @@ public class loadMenuController {
     private ImageView saveGame4;
     String username;
     File[] savefiles;
-    @FXML
-    void loadSave1(MouseEvent event) throws IOException , ClassNotFoundException{
-        GameState saved = null;
-        ObjectInputStream in = null;
-        if(savefiles.length >= 1 && savefiles[0] != null){
-            try {
-                in = new ObjectInputStream(new FileInputStream(savefiles[0]));
-                // Method for deserialization of object
-                saved = (GameState) in.readObject();
-            }finally {
-                in.close();
-            }
-        }
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GameScreen.fxml"));
-        Parent root = fxmlLoader.load();
-        gameScreenController controller = fxmlLoader.<gameScreenController>getController();
-        controller.setLevel(1);
-        controller.setUsername(username);
-        controller.setGameState(saved);
-        saveGame1.getScene().setRoot(root);
-    }
-
-    @FXML
-    void loadSave2(MouseEvent event) {
-    }
-
-    @FXML
-    void loadSave3(MouseEvent event) {
-    }
-
-    @FXML
-    void loadSave4(MouseEvent event) {
-    }
 
     @FXML
     void initialize() {
@@ -90,21 +57,25 @@ public class loadMenuController {
     void updateSaves(){
         File dir = new File(".");
         File [] files = dir.listFiles((d, name) -> name.startsWith(username));
+        gridPane.setHgap(10);
+        gridPane.setVgap(10);
         if(files.length == 0){
             gridPane.add(new Label("No Game Saves Found"), 0, 0);
         }else {
-            for (int xx = 0; xx < files.length; xx++) {
+            for(int xx = 0; xx < files.length; xx++) {
                 String numWithExtension = files[xx].getName().substring(username.length());
                 String timeNano = numWithExtension.substring(0, numWithExtension.length() - 4);
                 System.out.println(timeNano);
                 Date date = new Date(Long.parseLong(timeNano));
                 Label label = new Label(date.toString());
+                int finalXx = xx;
                 label.setOnMouseClicked(e -> {
+                    int fileNum = finalXx;
                     GameState saved = null;
                     ObjectInputStream in = null;
-                    if(savefiles.length >= 1 && savefiles[0] != null){
+                    if(savefiles.length >= 1 && savefiles[fileNum] != null){
                         try {
-                            in = new ObjectInputStream(new FileInputStream(savefiles[0]));
+                            in = new ObjectInputStream(new FileInputStream(savefiles[fileNum]));
                             // Method for deserialization of object
                             saved = (GameState) in.readObject();
                         } catch (FileNotFoundException ex) {
@@ -135,7 +106,7 @@ public class loadMenuController {
                     gridPane.getScene().setRoot(root);
                 });
                 gridPane.add(label, 0, xx);
-                label.autosize();
+                label.setStyle("-fx-font-size:20px; -fx-text-fill: red;");
             }
             savefiles = files;
         }

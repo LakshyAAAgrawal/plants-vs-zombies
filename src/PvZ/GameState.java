@@ -27,33 +27,31 @@ public class GameState implements Serializable {
         this.baseAnchorPane = mainAnchor;
         this.level = level;
         this.lawnGrid = new LawnGrid(mainAnchor);
-        this.numSunTokens = 150;
+        this.numSunTokens = 5000;
 
         mainAnchor.setOnMouseClicked(e -> {
-//            System.out.println("x: " + e.getSceneX() + ", y: " + e.getSceneY());
-//            System.out.println("y index: " + lawnGrid.getYindex(e.getSceneY()) + ", x index: " + lawnGrid.getXindex(e.getSceneX(), lawnGrid.getYindex(e.getSceneY())));
-//            if(true)return;
             if(mouseInputState == MouseInputStates.PLANTSET){
-                System.out.println("In Plantset");
                 if(lawnGrid.withinGrid(e.getSceneX(), e.getSceneY())){
-                    if(numSunTokens >= activatedPlant.sunCost){
-                        numSunTokens = numSunTokens - activatedPlant.sunCost;
-                        lawnGrid.addPlant(activatedPlant.getNewPlant(), e.getSceneX(), e.getSceneY());
-                        activatedPlant.setInactive();
-                        new AnimationTimer() {
-                            int x = 0;
-                            @Override
-                            public void handle(long now) {
-                                x++;
-                                if (x > 300) {
-                                    activatedPlant.setActive();
-                                    this.stop();
+                    if(activatedPlant != null && activatedPlant.clickable && numSunTokens >= activatedPlant.sunCost){
+                        if(lawnGrid.addPlant(activatedPlant.getNewPlant(), e.getSceneX(), e.getSceneY())){
+                            numSunTokens = numSunTokens - activatedPlant.sunCost;
+                            activatedPlant.setInactive();
+                            new AnimationTimer() {
+                                int x = 0;
+                                PlantMenuItem currPlant = activatedPlant;
+                                @Override
+                                public void handle(long now) {
+                                    x++;
+                                    if (x > 300) {
+                                        currPlant.setActive();
+                                        this.stop();
+                                    }
                                 }
-                            }
-                        }.start();
+                            }.start();
+                        }
                     }else{
                         mouseInputState = MouseInputStates.NORMAL;
-                        activatedPlant.setActive();
+                        //activatedPlant.setActive();
                     }
                 }else{
 //                    mouseInputState = MouseInputStates.NORMAL;

@@ -13,4 +13,9 @@ public abstract class Character extends GraphicObject implements Serializable {
     public void reduce_HP(int reduce) {
         HP -= reduce;
     }
+
+    public boolean isDead() {
+        if(HP <= 0) return true;
+        return false;
+    }
 }

@@ -124,7 +124,7 @@ public class gameScreenController {
     @FXML
     private ImageView peashooter2;
 
-    public int level = 1;
+    public int level = 5;
 
     @FXML
     void exit_to_main_menu(MouseEvent event) throws IOException {

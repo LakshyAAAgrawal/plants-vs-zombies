@@ -15,7 +15,6 @@ public class LawnGrid {
                 {{200, 477}, {270, 477}, {328, 477}, {394, 477}, {455, 477}, {523, 477}, {588, 477}, {646, 477}, {708, 477}, {782, 477}},
                 {{200, 578}, {270, 578}, {328, 578}, {394, 578}, {455, 578}, {523, 578}, {588, 578}, {646, 578}, {708, 578}, {782, 578}}
         };
-        System.out.println(gridCoordinates.length + " " + gridCoordinates[0].length + " " + gridCoordinates[0][0].length);
         plantsGrid = new Plant[5][9];
         this.mainPane = mainPane;
     }
@@ -30,19 +29,24 @@ public class LawnGrid {
         }
     }
 
-    public void addPlant(Plant newPlant, double sceneX, double sceneY) {
+    public boolean addPlant(Plant newPlant, double sceneX, double sceneY) {
         System.out.println("Add Plant");
-        newPlant.image.setFitWidth(100);
-        newPlant.image.setFitWidth(100);
+        newPlant.image.setFitWidth(60);
+        newPlant.image.setFitHeight(60);
         int x_index, y_index;
         y_index = getYindex(sceneY);
         x_index = getXindex(sceneX, y_index);
-        double x_co = (gridCoordinates[y_index][x_index][0] + gridCoordinates[y_index][x_index + 1][0])/2;
-        double y_co = (gridCoordinates[y_index][x_index][1] + gridCoordinates[y_index + 1][x_index][1])/2;
-        newPlant.image.setLayoutX(gridCoordinates[y_index][x_index][0]);
-        newPlant.image.setLayoutY(gridCoordinates[y_index][x_index][1]);
-        mainPane.getChildren().add(newPlant.image);
-        plantsGrid[y_index][x_index] = newPlant;
+        if(plantsGrid[y_index][x_index] == null || plantsGrid[y_index][x_index].isDead()){
+            double x_co = (gridCoordinates[y_index][x_index][0] + gridCoordinates[y_index][x_index + 1][0])/2;
+            double y_co = (gridCoordinates[y_index][x_index][1] + gridCoordinates[y_index + 1][x_index][1])/2;
+            newPlant.image.setLayoutX(gridCoordinates[y_index][x_index][0]);
+            newPlant.image.setLayoutY(gridCoordinates[y_index][x_index][1]);
+            mainPane.getChildren().add(newPlant.image);
+            plantsGrid[y_index][x_index] = newPlant;
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public int getYindex(double y){

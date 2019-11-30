@@ -1,6 +1,10 @@
 package PvZ;
 
+import javafx.animation.AnimationTimer;
+import javafx.scene.image.Image;
+
 import java.io.Serializable;
+import java.net.URISyntaxException;
 
 public abstract class Plant extends Character implements Serializable {
     protected int token_cost, time_cost;
@@ -17,5 +21,11 @@ public abstract class Plant extends Character implements Serializable {
     }
     public int getTime_cost(){
         return time_cost;
+    }
+
+    public void die() {
+        this.HP = -1;
+        this.setX(-150);
+        this.setY(-150);
     }
 }

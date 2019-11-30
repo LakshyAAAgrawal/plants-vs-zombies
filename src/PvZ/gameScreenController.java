@@ -59,7 +59,13 @@ public class gameScreenController {
     private ImageView exit_to_menu_btn;
 
     @FXML
+    private ImageView lawnmower2;
+
+    @FXML
     private ImageView lawnmower3;
+
+    @FXML
+    private ImageView lawnmower4;
 
     @FXML
     private ImageView lawnmower5;
@@ -125,7 +131,8 @@ public class gameScreenController {
                 }
             }
         }.start();
-        GameState gamestate = new GameState(gameScreenPane, level, timer, score);
+        ImageView[] lawnmowers = {lawnmower1, lawnmower2, lawnmower3, lawnmower4, lawnmower5};
+        GameState gamestate = new GameState(gameScreenPane, level, timer, score, lawnmowers);
         gamestate.createGraphicObjects();
         new AnimationTimer() {
             private long lastUpdate = 0;
@@ -139,10 +146,15 @@ public class gameScreenController {
                 for(int i = 0; i < Math.floor(numFrames); i++){
                     try {
                         gamestate.advance_one_frame();
-                    }catch(GameEndException e){
-                        System.out.println("Game over");
+                    }catch(GameWonException e){
+                        System.out.println("You won");
                         System.out.println("You got " + e.numSunTokens + " Points!!");
                         this.stop();
+                    }catch(GameLostException e){
+                        System.out.println("You Lost");
+                        this.stop();
+                    }catch(Exception e){
+                        e.printStackTrace();
                     }
                 }
                 lastUpdate = now ;

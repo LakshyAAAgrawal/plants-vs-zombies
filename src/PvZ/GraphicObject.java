@@ -24,6 +24,8 @@ public abstract class GraphicObject implements Serializable {
         catch (URISyntaxException e) {
             e.printStackTrace();
         }
+        image.setLayoutX(x);
+        image.setLayoutY(y);
     }
 
     public void setX(double x){

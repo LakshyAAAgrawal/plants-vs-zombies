@@ -8,6 +8,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 
 import java.io.Serializable;
 import java.net.URISyntaxException;
@@ -19,23 +20,29 @@ enum MouseInputStates {
 
 public class GameState implements Serializable {
     private transient AnchorPane baseAnchorPane;
-    private int level;
+    int level;
     private PlantMenuItem activatedPlant;
     private int numSunTokens;
     transient Label timer, score;
     LawnGrid lawnGrid;
     int timerLeft;
-    ArrayList<Plant> plants;
-    ArrayList<ArrayList<Zombie>> zombies;
+    ZombieSpawner zombieSpawner;
+    ZombieMover zombieMover;
+    ArrayList<Updatable> observers;
 
-    public GameState(AnchorPane mainAnchor, int level, Label timer, Label score){
+    public GameState(AnchorPane mainAnchor, int level, Label timer, Label score, ImageView[] lawnmowers){
         this.baseAnchorPane = mainAnchor;
         this.level = level;
-        this.lawnGrid = new LawnGrid(mainAnchor);
+        this.lawnGrid = new LawnGrid(mainAnchor, lawnmowers);
         this.numSunTokens = 5000;
         this.timer = timer;
         this.score = score;
         this.timerLeft = ((level - 1)*30)*60 + 60*60;
+        this.observers = new ArrayList<Updatable>();
+        zombieSpawner = new ZombieSpawner(this);
+        zombieMover = new ZombieMover(this);
+        observers.add(zombieSpawner);
+        observers.add(zombieMover);
         System.out.println("Init " + timerLeft);
         mainAnchor.setOnMouseClicked(e -> {
             if(mouseInputState == MouseInputStates.PLANTSET){
@@ -75,6 +82,10 @@ public class GameState implements Serializable {
 
     }
 
+    public Pane getMainPane(){
+        return this.baseAnchorPane;
+    }
+
     private void createPlantBuyMenu() throws URISyntaxException{
         GridPane gridPane = new GridPane();
         MenuItemFactory menuItemFactory = new MenuItemFactory(this);
@@ -109,15 +120,23 @@ public class GameState implements Serializable {
         gridPane.setLayoutY(14);
     }
 
-    public void advance_one_frame() throws GameEndException{
+    public void advance_one_frame() throws GameEventException{
         score.setText(Integer.toString(numSunTokens));
         timer.setText(Integer.toString(timerLeft/60));
         timerLeft--;
-        if(timerLeft <= 0) throw new GameEndException(numSunTokens);
+        if(timerLeft <= 0) throw new GameWonException(numSunTokens);
+        boolean won = false;
+        for(Updatable observer: observers){
+            observer.update();
+        }
     }
 
     public void setPlantSetMode(PlantMenuItem plant) {
         this.mouseInputState = MouseInputStates.PLANTSET;
         this.activatedPlant = plant;
+    }
+
+    public void addObserver(Updatable u){
+        observers.add(u);
     }
 }

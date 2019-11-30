@@ -1,8 +1,8 @@
 package PvZ;
 
-public class GameEndException extends Exception{
+public class GameWonException extends GameEventException{
     public int numSunTokens;
-    public GameEndException(int numSunTokens){
+    public GameWonException(int numSunTokens){
         super();
         this.numSunTokens = numSunTokens;
     }

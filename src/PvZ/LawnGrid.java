@@ -1,12 +1,20 @@
 package PvZ;
 
+import javafx.animation.AnimationTimer;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+
+import java.util.ArrayList;
 
 public class LawnGrid {
     double[][][] gridCoordinates;
     Plant[][] plantsGrid;
+    ArrayList[] zombieLanes;
     transient Pane mainPane;
-    public LawnGrid(Pane mainPane){
+    boolean lawnmowersUsed[];
+    ImageView lawnmowers[];
+
+    public LawnGrid(Pane mainPane, ImageView[] lawnmowers){
         gridCoordinates = new double[][][]{
                 {{200, 85}, {270, 85}, {328, 85}, {394, 85}, {455, 85}, {523, 85}, {588, 85}, {646, 85}, {708, 85}, {782, 85}},
                 {{200, 180}, {270, 180}, {328, 180}, {394, 180}, {455, 180}, {523, 180}, {588, 180}, {646, 180}, {708, 180}, {782, 180}},
@@ -17,15 +25,21 @@ public class LawnGrid {
         };
         plantsGrid = new Plant[5][9];
         this.mainPane = mainPane;
+        zombieLanes = new ArrayList[5];
+        for(int i = 0; i < 5; i++){
+            zombieLanes[i] = new ArrayList<Zombie>();
+        }
+        lawnmowersUsed = new boolean[]{false, false, false, false, false};
+        this.lawnmowers = lawnmowers;
     }
     public boolean withinGrid(double x, double y){
-        if(x < gridCoordinates[0][0][0] ||
-                x > gridCoordinates[0][9][0] ||
-                y > gridCoordinates[5][9][1] ||
-                y < gridCoordinates[0][0][1]){
-            return false;
-        }else{
+        if(x > gridCoordinates[0][0][0] &&
+                x < gridCoordinates[0][9][0] &&
+                y < gridCoordinates[5][9][1] &&
+                y > gridCoordinates[0][0][1]){
             return true;
+        }else{
+            return false;
         }
     }
 
@@ -56,10 +70,37 @@ public class LawnGrid {
         return y_index - 1;
     }
 
+    public double getZombieInitX(int ln){
+        return gridCoordinates[0][9][0] + 100;
+    }
+
+    public double getZombieInitY(int ln){
+        return (gridCoordinates[ln][9][1] + 5);
+    }
+
     public int getXindex(double x, int y_index){
         int x_index = 0;
-        while(gridCoordinates[y_index][x_index][0] < x)
+        while(gridCoordinates[0][x_index][0] < x)
             x_index++;
         return x_index - 1;
+    }
+
+    public void addZombie(Zombie zombie, int laneNo) {
+        zombieLanes[laneNo].add(zombie);
+    }
+
+    public void useLawnmower(int finalLaneNo) {
+        lawnmowersUsed[finalLaneNo] = true;
+        new AnimationTimer(){
+            int x=0;
+            @Override
+            public void handle(long now) {
+                x++;
+                if(lawnmowers[finalLaneNo].getLayoutX()>900){
+                    this.stop();
+                }
+                lawnmowers[finalLaneNo].setLayoutX(lawnmowers[finalLaneNo].getLayoutX()+10);
+            }
+        }.start();
     }
 }

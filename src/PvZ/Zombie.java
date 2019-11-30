@@ -1,6 +1,10 @@
 package PvZ;
 
+import javafx.animation.AnimationTimer;
+import javafx.scene.image.Image;
+
 import java.io.Serializable;
+import java.net.URISyntaxException;
 
 public abstract class Zombie extends Character implements Serializable {
     protected int laneNumber;
@@ -12,9 +16,31 @@ public abstract class Zombie extends Character implements Serializable {
         this.laneNumber=l_n;
     }
     public void attack(Plant plant) {
-        plant.reduce_HP(this.attack_power);
+        plant.reduce_HP(this.attack_power/60);
     }
     public int getLaneNumber(){
         return laneNumber;
+    }
+
+    public void die() {
+        this.HP = -1;
+        try {
+            this.image.setImage(new Image(getClass().getResource(dyingImageUrl).toURI().toString()));
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+        Zombie z = this;
+        new AnimationTimer(){
+            int x = 0;
+            @Override
+            public void handle(long now) {
+                x++;
+                if(x > 50){
+                    z.setX(-150);
+                    z.setY(-150);
+                    this.stop();
+                }
+            }
+        }.start();
     }
 }

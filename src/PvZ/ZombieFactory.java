@@ -1,6 +1,8 @@
 package PvZ;
 
-public class ZombieFactory {
+import java.io.Serializable;
+
+public class ZombieFactory implements Serializable {
     public Zombie createZombie(int num, int l_n, double x, double y){
         Zombie zombie = null;
         if(num == 1){

@@ -5,7 +5,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
-public class PlantFactory {
+import java.io.Serializable;
+
+public class PlantFactory implements Serializable {
     public Plant createPlant(String plantType){
         Plant toRet = null;
         if(plantType.equals("sunflower")){

@@ -6,10 +6,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
+import java.io.Serializable;
 import java.net.URISyntaxException;
 
-public class PlantMenuItem {
-    ImageView displayImage;
+public class PlantMenuItem implements Serializable {
+    transient ImageView displayImage;
     int sunCost;
     boolean clickable;
     String activeURL, inactiveURL, plantType;

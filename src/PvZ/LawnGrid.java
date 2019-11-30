@@ -4,9 +4,10 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class LawnGrid {
+public class LawnGrid implements Serializable {
     double[][][] gridCoordinates;
     Plant[][] plantsGrid;
     ArrayList[] zombieLanes;
@@ -16,7 +17,7 @@ public class LawnGrid {
 
     public LawnGrid(Pane mainPane, ImageView[] lawnmowers){
         gridCoordinates = new double[][][]{
-                {{200, 85}, {270, 85}, {328, 85}, {394, 85}, {455, 85}, {523, 85}, {588, 85}, {646, 85}, {708, 85}, {782, 85}},
+                {{200, 80}, {270, 80}, {328, 80}, {394, 80}, {455, 80}, {523, 80}, {588, 80}, {646, 80}, {708, 80}, {782, 80}},
                 {{200, 180}, {270, 180}, {328, 180}, {394, 180}, {455, 180}, {523, 180}, {588, 180}, {646, 180}, {708, 180}, {782, 180}},
                 {{200, 270}, {270, 270}, {328, 270}, {394, 270}, {455, 270}, {523, 270}, {588, 270}, {646, 270}, {708, 270}, {782, 270}},
                 {{200, 383}, {270, 383}, {328, 383}, {394, 383}, {455, 383}, {523, 383}, {588, 383}, {646, 383}, {708, 383}, {782, 383}},
@@ -75,7 +76,7 @@ public class LawnGrid {
     }
 
     public double getZombieInitY(int ln){
-        return (gridCoordinates[ln][9][1] + 5);
+        return (gridCoordinates[ln][9][1] + 1);
     }
 
     public int getXindex(double x, int y_index){

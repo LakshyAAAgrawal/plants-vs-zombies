@@ -5,9 +5,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
+import java.io.Serializable;
 import java.net.URISyntaxException;
 
-public class MenuItemFactory {
+public class MenuItemFactory implements Serializable {
     GameState gamestate;
     public MenuItemFactory(GameState gamestate){
         this.gamestate = gamestate;

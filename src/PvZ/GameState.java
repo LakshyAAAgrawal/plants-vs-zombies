@@ -28,6 +28,7 @@ public class GameState implements Serializable {
     int timerLeft;
     ZombieSpawner zombieSpawner;
     ZombieMover zombieMover;
+    PeaSpawner peaSpawner;
     ArrayList<Updatable> observers;
 
     public GameState(AnchorPane mainAnchor, int level, Label timer, Label score, ImageView[] lawnmowers){
@@ -41,8 +42,10 @@ public class GameState implements Serializable {
         this.observers = new ArrayList<Updatable>();
         zombieSpawner = new ZombieSpawner(this);
         zombieMover = new ZombieMover(this);
+        peaSpawner = new PeaSpawner(this);
         observers.add(zombieSpawner);
         observers.add(zombieMover);
+        observers.add(peaSpawner);
         System.out.println("Init " + timerLeft);
         mainAnchor.setOnMouseClicked(e -> {
             if(mouseInputState == MouseInputStates.PLANTSET){

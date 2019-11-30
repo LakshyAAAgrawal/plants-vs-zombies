@@ -30,9 +30,6 @@ public class ZombieMover implements Serializable, Updatable {
                 if (gameState.lawnGrid.withinGrid(zomX, zomY)) {
                     int gridY = gameState.lawnGrid.getYindex(zomY);
                     int gridX = gameState.lawnGrid.getXindex(zomX, gridY);
-                    if(plants[gridY][gridX] != null){
-                        System.out.println("Yayy plant");
-                    }
                     if (plants[gridY][gridX] != null && (plants[gridY][gridX].isDead() == false)) {
                         System.out.println("GridY: " + gridY + ", GridX: " + gridX);
                         zombie.attack(plants[gridY][gridX]);

@@ -27,6 +27,10 @@ public class ZombieMover implements Serializable, Updatable {
             for(Zombie zombie: zombies[laneNo]){
                 double zomX = zombie.x;
                 double zomY = zombie.y;
+                if(zombie.isDead()){
+                    zombiesToremove[laneNo].add(zombie);
+                    continue;
+                }
                 if (gameState.lawnGrid.withinGrid(zomX, zomY)) {
                     int gridY = gameState.lawnGrid.getYindex(zomY);
                     int gridX = gameState.lawnGrid.getXindex(zomX, gridY);

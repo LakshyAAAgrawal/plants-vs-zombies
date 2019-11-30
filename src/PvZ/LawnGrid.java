@@ -14,6 +14,7 @@ public class LawnGrid implements Serializable {
     transient Pane mainPane;
     boolean lawnmowersUsed[];
     ImageView lawnmowers[];
+    ArrayList[] peaLanes;
 
     public LawnGrid(Pane mainPane, ImageView[] lawnmowers){
         gridCoordinates = new double[][][]{
@@ -29,6 +30,10 @@ public class LawnGrid implements Serializable {
         zombieLanes = new ArrayList[5];
         for(int i = 0; i < 5; i++){
             zombieLanes[i] = new ArrayList<Zombie>();
+        }
+        peaLanes = new ArrayList[5];
+        for(int i = 0; i < 5; i++){
+            peaLanes[i] = new ArrayList<Pea>();
         }
         lawnmowersUsed = new boolean[]{false, false, false, false, false};
         this.lawnmowers = lawnmowers;
@@ -46,16 +51,15 @@ public class LawnGrid implements Serializable {
 
     public boolean addPlant(Plant newPlant, double sceneX, double sceneY) {
         System.out.println("Add Plant");
-        newPlant.image.setFitWidth(60);
-        newPlant.image.setFitHeight(60);
+        newPlant.setDimension(60, 60);
         int x_index, y_index;
         y_index = getYindex(sceneY);
         x_index = getXindex(sceneX, y_index);
         if(plantsGrid[y_index][x_index] == null || plantsGrid[y_index][x_index].isDead()){
             double x_co = (gridCoordinates[y_index][x_index][0] + gridCoordinates[y_index][x_index + 1][0])/2;
             double y_co = (gridCoordinates[y_index][x_index][1] + gridCoordinates[y_index + 1][x_index][1])/2;
-            newPlant.image.setLayoutX(gridCoordinates[y_index][x_index][0]);
-            newPlant.image.setLayoutY(gridCoordinates[y_index][x_index][1]);
+            newPlant.setX(gridCoordinates[y_index][x_index][0]);
+            newPlant.setY(gridCoordinates[y_index][x_index][1]);
             mainPane.getChildren().add(newPlant.image);
             plantsGrid[y_index][x_index] = newPlant;
             return true;

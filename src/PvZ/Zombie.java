@@ -35,8 +35,8 @@ public abstract class Zombie extends Character implements Serializable {
             @Override
             public void handle(long now) {
                 x++;
-                if(x > 50){
-                    z.setX(-150);
+                if(x > 30){
+                    z.setX(1000);
                     z.setY(-150);
                     this.stop();
                 }

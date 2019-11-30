@@ -29,6 +29,7 @@ public class GameState implements Serializable {
     ZombieSpawner zombieSpawner;
     ZombieMover zombieMover;
     PeaSpawner peaSpawner;
+    PeaMover peaMover;
     SunflowerSunSpawner sunflowerSunSpawner;
     ArrayList<Updatable> observers;
 
@@ -45,10 +46,12 @@ public class GameState implements Serializable {
         zombieMover = new ZombieMover(this);
         peaSpawner = new PeaSpawner(this);
         sunflowerSunSpawner = new SunflowerSunSpawner(this);
+        peaMover = new PeaMover(this);
         observers.add(zombieSpawner);
         observers.add(zombieMover);
         observers.add(peaSpawner);
         observers.add(sunflowerSunSpawner);
+        observers.add(peaMover);
         System.out.println("Init " + timerLeft);
         mainAnchor.setOnMouseClicked(e -> {
             if(mouseInputState == MouseInputStates.PLANTSET){
@@ -144,5 +147,17 @@ public class GameState implements Serializable {
 
     public void addObserver(Updatable u){
         observers.add(u);
+    }
+
+    public void addPea(double x, double y, int laneNum) {
+        Pea pea = new Pea(x, y);
+        pea.createGraphicObject();
+        pea.image.setFitWidth(20);
+        pea.image.setFitHeight(20);
+        lawnGrid.peaLanes[laneNum].add(pea);
+        baseAnchorPane.getChildren().add(pea.image);
+        System.out.println("x " + x + ", y " + y);
+        pea.setX(x);
+        pea.setY(y);
     }
 }

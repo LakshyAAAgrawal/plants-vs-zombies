@@ -10,6 +10,8 @@ public abstract class GraphicObject implements Serializable {
     transient ImageView image;
     protected double x;
     protected double y;
+    int height;
+    int width;
     String image_media;
 
     public GraphicObject(String img,double x,double y){
@@ -26,6 +28,13 @@ public abstract class GraphicObject implements Serializable {
         }
         image.setLayoutX(x);
         image.setLayoutY(y);
+    }
+
+    public void setDimension(int width, int height){
+        this.height = height;
+        this.width = width;
+        this.image.setFitWidth(width);
+        this.image.setFitHeight(height);
     }
 
     public void setX(double x){

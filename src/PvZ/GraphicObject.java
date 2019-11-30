@@ -8,8 +8,8 @@ import java.net.URISyntaxException;
 
 public abstract class GraphicObject implements Serializable {
     transient ImageView image;
-    protected final double x;
-    protected final double y;
+    protected double x;
+    protected double y;
     String image_media;
 
     public GraphicObject(String img,double x,double y){
@@ -24,5 +24,21 @@ public abstract class GraphicObject implements Serializable {
         catch (URISyntaxException e) {
             e.printStackTrace();
         }
+    }
+
+    public void setX(double x){
+        this.x = x;
+        image.setLayoutX(x);
+    }
+
+    public void setY(double y){
+        this.y = y;
+        image.setLayoutY(y);
+    }
+
+    public void addToPane(Pane pane){
+        pane.getChildren().add(image);
+        image.setLayoutX(x);
+        image.setLayoutY(y);
     }
 }

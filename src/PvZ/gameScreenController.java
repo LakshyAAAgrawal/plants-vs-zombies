@@ -137,9 +137,14 @@ public class gameScreenController {
                 double numFrames = numFrame + (elapsedNanoSeconds*60) / 1_000_000_000 ;
                 numFrame = numFrames - Math.floor(numFrames);
                 for(int i = 0; i < Math.floor(numFrames); i++){
-                    gamestate.advance_one_frame();
+                    try {
+                        gamestate.advance_one_frame();
+                    }catch(GameEndException e){
+                        System.out.println("Game over");
+                        System.out.println("You got " + e.numSunTokens + " Points!!");
+                        this.stop();
+                    }
                 }
-                System.out.println(numFrame);
                 lastUpdate = now ;
             }
         }.start();

@@ -109,10 +109,11 @@ public class GameState implements Serializable {
         gridPane.setLayoutY(14);
     }
 
-    public void advance_one_frame() {
+    public void advance_one_frame() throws GameEndException{
         score.setText(Integer.toString(numSunTokens));
         timer.setText(Integer.toString(timerLeft/60));
         timerLeft--;
+        if(timerLeft <= 0) throw new GameEndException(numSunTokens);
     }
 
     public void setPlantSetMode(PlantMenuItem plant) {

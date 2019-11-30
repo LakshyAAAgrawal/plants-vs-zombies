@@ -5,8 +5,10 @@ import java.io.Serializable;
 public abstract class Zombie extends Character implements Serializable {
     protected int laneNumber;
     protected final int movePerFrame=10;
-    public Zombie(int HP, int attack_power, int l_n, double x, double y, String img){
-        super(HP,attack_power,img,x,y);
+    String dyingImageUrl;
+    public Zombie(int HP, int attack_power, int l_n, double x, double y, String normalURL, String dyingURL){
+        super(HP,attack_power,normalURL,x,y);
+        this.dyingImageUrl = dyingURL;
         this.laneNumber=l_n;
     }
     public void attack(Plant plant) {

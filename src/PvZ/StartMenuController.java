@@ -52,8 +52,10 @@ public class StartMenuController {
 
     @FXML
     void startNewGameClicked(MouseEvent event) throws IOException{
-        System.out.println("Start new game clicked");
-        Parent root = FXMLLoader.load(getClass().getResource("GameScreen.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GameScreen.fxml"));
+        Parent root = fxmlLoader.load();
+        gameScreenController controller = fxmlLoader.<gameScreenController>getController();
+        controller.setLevel(1);
         start_btn.getScene().setRoot(root);
     }
 

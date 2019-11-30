@@ -76,10 +76,12 @@ public class gameScreenController {
     @FXML
     private Label timer;
 
+    GameState gameState;
+
     @FXML
     private ImageView resume_game_btn;
 
-    public int level = 5;
+    public int level = 1;
 
     @FXML
     void exit_to_main_menu(MouseEvent event) throws IOException {
@@ -102,6 +104,8 @@ public class gameScreenController {
         score.setText(String.valueOf(Integer.valueOf(score.getText())+25));
         System.out.println(score.getText());
     }
+
+    ImageView[] lawnmowers;
 
     @FXML
     void initialize() throws InterruptedException, URISyntaxException {
@@ -131,9 +135,9 @@ public class gameScreenController {
                 }
             }
         }.start();
-        ImageView[] lawnmowers = {lawnmower1, lawnmower2, lawnmower3, lawnmower4, lawnmower5};
-        GameState gamestate = new GameState(gameScreenPane, level, timer, score, lawnmowers);
-        gamestate.createGraphicObjects();
+        lawnmowers = new ImageView[]{lawnmower1, lawnmower2, lawnmower3, lawnmower4, lawnmower5};
+        gameState = new GameState(gameScreenPane, level, timer, score, lawnmowers);
+        gameState.createGraphicObjects();
         new AnimationTimer() {
             private long lastUpdate = 0;
             double numFrame = 0;
@@ -145,7 +149,7 @@ public class gameScreenController {
                 numFrame = numFrames - Math.floor(numFrames);
                 for(int i = 0; i < Math.floor(numFrames); i++){
                     try {
-                        gamestate.advance_one_frame();
+                        gameState.advance_one_frame();
                     }catch(GameWonException e){
                         System.out.println("You won");
                         System.out.println("You got " + e.numSunTokens + " Points!!");
@@ -162,5 +166,15 @@ public class gameScreenController {
         }.start();
     }
 
+    public void setLevel(int i) {
+        System.out.println("level " + i);
+        this.level = i;
+        gameState = new GameState(gameScreenPane, level, timer, score, lawnmowers);
+        try {
+            gameState.createGraphicObjects();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+    }
 }
 

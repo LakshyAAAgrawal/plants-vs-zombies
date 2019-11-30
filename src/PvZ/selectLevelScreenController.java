@@ -36,31 +36,46 @@ public class selectLevelScreenController {
 
     @FXML
     void startLevel1(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("GameScreen.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GameScreen.fxml"));
+        Parent root = fxmlLoader.load();
+        gameScreenController controller = fxmlLoader.<gameScreenController>getController();
+        controller.setLevel(1);
         level1Btn.getScene().setRoot(root);
     }
 
     @FXML
     void startLevel2(MouseEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("GameScreen.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GameScreen.fxml"));
+        Parent root = fxmlLoader.load();
+        gameScreenController controller = fxmlLoader.<gameScreenController>getController();
+        controller.setLevel(2);
         level1Btn.getScene().setRoot(root);
     }
 
     @FXML
     void startLevel3(MouseEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("GameScreen.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GameScreen.fxml"));
+        Parent root = fxmlLoader.load();
+        gameScreenController controller = fxmlLoader.<gameScreenController>getController();
+        controller.setLevel(3);
         level1Btn.getScene().setRoot(root);
     }
 
     @FXML
     void startLevel4(MouseEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("GameScreen.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GameScreen.fxml"));
+        Parent root = fxmlLoader.load();
+        gameScreenController controller = fxmlLoader.<gameScreenController>getController();
+        controller.setLevel(4);
         level1Btn.getScene().setRoot(root);
     }
 
     @FXML
     void startLevel5(MouseEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("GameScreen.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GameScreen.fxml"));
+        Parent root = fxmlLoader.load();
+        gameScreenController controller = fxmlLoader.<gameScreenController>getController();
+        controller.setLevel(5);
         level1Btn.getScene().setRoot(root);
     }
 

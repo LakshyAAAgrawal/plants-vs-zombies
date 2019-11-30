@@ -18,7 +18,7 @@ public abstract class Shooter extends Plant implements Serializable {
         if(counter == 0) {
             to_ret = true;
         }
-        else if((counter <= numPeas*10) && (counter % 10 == 0)){
+        else if((counter < numPeas*10) && (counter % 10 == 0)){
             to_ret = true;
         }
         counter = (counter + 1)%(gap_between_peas * 60);

@@ -47,52 +47,10 @@ public class gameScreenController {
     private ScrollPane MenuScrollPane;
 
     @FXML
-    private ImageView zombie1;
-
-    @FXML
-    private ImageView zombie2;
-
-    @FXML
-    private ImageView zombie3;
-
-    @FXML
-    private ImageView zombie4;
-
-    @FXML
-    private ImageView zombie5;
-
-    @FXML
     public static ImageView menu_wallnut;
 
     @FXML
     private Label score;
-
-    @FXML
-    private ImageView fall_sun1;
-
-    @FXML
-    private ImageView fall_sun2;
-
-    @FXML
-    private ImageView fall_sun3;
-
-    @FXML
-    private ImageView fall_sun4;
-
-    @FXML
-    private ImageView fall_sun5;
-
-    @FXML
-    private ImageView fall_sun6;
-
-    @FXML
-    private ImageView fall_sun7;
-
-    @FXML
-    private ImageView fall_sun8;
-
-    @FXML
-    private ImageView fall_sun9;
 
     @FXML
     private ImageView lawnmower1;
@@ -113,16 +71,7 @@ public class gameScreenController {
     private Label timer;
 
     @FXML
-    private GridPane lawn_grid;
-
-    @FXML
     private ImageView resume_game_btn;
-
-    @FXML
-    private ImageView peashooter1;
-
-    @FXML
-    private ImageView peashooter2;
 
     public int level = 5;
 
@@ -176,17 +125,21 @@ public class gameScreenController {
                 }
             }
         }.start();
-        GameState gamestate = new GameState(gameScreenPane, level);
+        GameState gamestate = new GameState(gameScreenPane, level, timer, score);
         gamestate.createGraphicObjects();
         new AnimationTimer() {
-            private long lastUpdate ;
+            private long lastUpdate = 0;
+            double numFrame = 0;
             @Override
             public void handle(long now) {
-                long elapsedNanoSeconds = now - lastUpdate ;
-                long numFrames = (elapsedNanoSeconds*60) / 1_000_000_000 ;
-                for(int i = 0; i < numFrames; i++){
+                if(lastUpdate == 0) lastUpdate = now;
+                double elapsedNanoSeconds = now - lastUpdate ;
+                double numFrames = numFrame + (elapsedNanoSeconds*60) / 1_000_000_000 ;
+                numFrame = numFrames - Math.floor(numFrames);
+                for(int i = 0; i < Math.floor(numFrames); i++){
                     gamestate.advance_one_frame();
                 }
+                System.out.println(numFrame);
                 lastUpdate = now ;
             }
         }.start();

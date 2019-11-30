@@ -5,7 +5,7 @@ import javafx.scene.layout.Pane;
 public class LawnGrid {
     double[][][] gridCoordinates;
     Plant[][] plantsGrid;
-    Pane mainPane;
+    transient Pane mainPane;
     public LawnGrid(Pane mainPane){
         gridCoordinates = new double[][][]{
                 {{200, 85}, {270, 85}, {328, 85}, {394, 85}, {455, 85}, {523, 85}, {588, 85}, {646, 85}, {708, 85}, {782, 85}},

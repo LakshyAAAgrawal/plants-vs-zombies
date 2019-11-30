@@ -2,6 +2,7 @@ package PvZ;
 
 import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -21,14 +22,21 @@ public class GameState implements Serializable {
     private int level;
     private PlantMenuItem activatedPlant;
     private int numSunTokens;
+    transient Label timer, score;
     LawnGrid lawnGrid;
+    int timerLeft;
+    ArrayList<Plant> plants;
+    ArrayList<ArrayList<Zombie>> zombies;
 
-    public GameState(AnchorPane mainAnchor, int level){
+    public GameState(AnchorPane mainAnchor, int level, Label timer, Label score){
         this.baseAnchorPane = mainAnchor;
         this.level = level;
         this.lawnGrid = new LawnGrid(mainAnchor);
         this.numSunTokens = 5000;
-
+        this.timer = timer;
+        this.score = score;
+        this.timerLeft = ((level - 1)*30)*60 + 60*60;
+        System.out.println("Init " + timerLeft);
         mainAnchor.setOnMouseClicked(e -> {
             if(mouseInputState == MouseInputStates.PLANTSET){
                 if(lawnGrid.withinGrid(e.getSceneX(), e.getSceneY())){
@@ -64,6 +72,7 @@ public class GameState implements Serializable {
 
     public void createGraphicObjects() throws URISyntaxException {
         createPlantBuyMenu();
+
     }
 
     private void createPlantBuyMenu() throws URISyntaxException{
@@ -101,7 +110,9 @@ public class GameState implements Serializable {
     }
 
     public void advance_one_frame() {
-
+        score.setText(Integer.toString(numSunTokens));
+        timer.setText(Integer.toString(timerLeft/60));
+        timerLeft--;
     }
 
     public void setPlantSetMode(PlantMenuItem plant) {

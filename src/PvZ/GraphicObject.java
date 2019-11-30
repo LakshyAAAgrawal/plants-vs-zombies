@@ -29,6 +29,12 @@ public abstract class GraphicObject implements Serializable {
         image.setLayoutX(x);
         image.setLayoutY(y);
     }
+    public void createGraphicObject(Pane pane){
+        createGraphicObject();
+        image.setFitHeight(height);
+        image.setFitWidth(width);
+        pane.getChildren().add(image);
+    }
 
     public void setDimension(int width, int height){
         this.height = height;

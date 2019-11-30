@@ -12,7 +12,7 @@
   <children>
     <AnchorPane prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
-        <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="0.0">
           <image>
             <Image url="@pvz_night.png" />
           </image>
@@ -51,7 +51,7 @@
           <content>
             <GridPane prefHeight="105.0" prefWidth="700.0">
               <children>
-                <ImageView fitHeight="83.0" fitWidth="119.66666412353516" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                <ImageView fx:id="saveGame1" fitHeight="83.0" fitWidth="119.66666412353516" onMouseClicked="#loadSave1" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="0" GridPane.rowIndex="0">
                   <image>
                     <Image url="@lawn.png" />
                   </image>
@@ -61,7 +61,7 @@
                     <Font name="System Bold" size="13.0" fx:id="x1" />
                   </font>
                 </Label>
-                <ImageView fitHeight="83.0" fitWidth="119.66666412353516" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                <ImageView fx:id="saveGame2" fitHeight="83.0" fitWidth="119.66666412353516" onMouseClicked="#loadSave2" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="1" GridPane.rowIndex="0">
                   <image>
                     <Image url="@lawn.png" />
                   </image>
@@ -70,12 +70,12 @@
                 <Label font="$x1" prefWidth="119.6666259765625" text="Saved Game 3" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                 <Label font="$x1" prefWidth="119.6666259765625" text="Saved Game 4" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                 <Label prefWidth="119.6666259765625" text="Saved Game 5" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                <ImageView fitHeight="83.0" fitWidth="119.66666412353516" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                <ImageView fx:id="saveGame3" fitHeight="83.0" fitWidth="119.66666412353516" onMouseClicked="#loadSave3" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="2" GridPane.rowIndex="0">
                   <image>
                     <Image url="@lawn.png" />
                   </image>
                 </ImageView>
-                <ImageView fitHeight="83.0" fitWidth="119.66666412353516" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="3" GridPane.rowIndex="0">
+                <ImageView fx:id="saveGame4" fitHeight="83.0" fitWidth="119.66666412353516" onMouseClicked="#loadSave4" pickOnBounds="true" preserveRatio="false" GridPane.columnIndex="3" GridPane.rowIndex="0">
                   <image>
                     <Image url="@lawn.png" />
                   </image>

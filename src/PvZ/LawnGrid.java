@@ -13,7 +13,7 @@ public class LawnGrid implements Serializable {
     ArrayList[] zombieLanes;
     transient Pane mainPane;
     boolean lawnmowersUsed[];
-    ImageView lawnmowers[];
+    transient ImageView lawnmowers[];
     ArrayList[] peaLanes;
 
     public LawnGrid(Pane mainPane, ImageView[] lawnmowers){

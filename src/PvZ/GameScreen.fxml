@@ -181,7 +181,7 @@
                 <Image url="@pvz_logo.png" />
               </image>
             </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="311.0" layoutY="804.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="saveGameBtn" fitHeight="150.0" fitWidth="200.0" layoutX="311.0" layoutY="804.0" onMouseClicked="#saveGameClicked" pickOnBounds="true" preserveRatio="true">
               <image>
                 <Image url="@save_game_btn.png" />
               </image>

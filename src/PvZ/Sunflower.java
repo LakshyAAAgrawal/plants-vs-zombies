@@ -23,10 +23,15 @@ public class Sunflower extends Plant implements Serializable{
             e.printStackTrace();
         }*/
         sun.createGraphicObject();
-        sun.image.setFitWidth(100);
-        sun.image.setFitHeight(100);
+        sun.setDimension(100, 100);
         sun.setX(100);
         sun.setY(-213);
+    }
+
+    @Override
+    public void createGraphicObject(Pane pane){
+        super.createGraphicObject(pane);
+        sun.createGraphicObject(pane);
     }
     public void sun_setX_Y(double x,double y){
         sun.setX(x);

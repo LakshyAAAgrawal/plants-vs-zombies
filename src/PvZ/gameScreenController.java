@@ -23,6 +23,8 @@ import javafx.scene.shape.Path;
 import javafx.scene.shape.LineTo;
 import sun.security.provider.Sun;
 
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.Random;
 import java.util.ArrayList;
 import java.io.IOException;
@@ -72,6 +74,21 @@ public class gameScreenController {
 
     @FXML
     private Label pause_game_btn;
+    int counter = 1;
+    @FXML
+    void saveGameClicked(MouseEvent event) throws IOException{
+        FileOutputStream file = new FileOutputStream(username + counter + ".pvz");
+        ObjectOutputStream out = new ObjectOutputStream(file);
+        try {
+            out.writeObject(gameState);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        finally{
+            out.close();
+            file.close();
+        }
+    }
 
     @FXML
     private Label timer;
@@ -82,6 +99,7 @@ public class gameScreenController {
     private ImageView resume_game_btn;
 
     public int level = 1;
+    private String username;
 
     @FXML
     void exit_to_main_menu(MouseEvent event) throws IOException {
@@ -136,8 +154,8 @@ public class gameScreenController {
             }
         }.start();
         lawnmowers = new ImageView[]{lawnmower1, lawnmower2, lawnmower3, lawnmower4, lawnmower5};
-        gameState = new GameState(gameScreenPane, level, timer, score, lawnmowers);
-        gameState.createGraphicObjects();
+        //gameState = new GameState(gameScreenPane, level, timer, score, lawnmowers);
+        //gameState.createGraphicObjects();
         new AnimationTimer() {
             private long lastUpdate = 0;
             double numFrame = 0;
@@ -170,6 +188,19 @@ public class gameScreenController {
         System.out.println("level " + i);
         this.level = i;
         gameState = new GameState(gameScreenPane, level, timer, score, lawnmowers);
+        try {
+            gameState.createGraphicObjects();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    public void setGameState(GameState gameState){
+        this.gameState = gameState;
+        gameState.setTransientAttributes(gameScreenPane, timer, score, lawnmowers);
         try {
             gameState.createGraphicObjects();
         } catch (URISyntaxException e) {

@@ -15,8 +15,7 @@ public class ZombieFactory implements Serializable {
             zombie = new SpecialZombie(l_n, x, y);
         }
         zombie.createGraphicObject();
-        zombie.image.setFitHeight(100);
-        zombie.image.setFitWidth(100);
+        zombie.setDimension(100, 100);
         return zombie;
     }
 }

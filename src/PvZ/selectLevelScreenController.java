@@ -32,6 +32,7 @@ public class selectLevelScreenController {
 
     @FXML
     private ImageView level5Btn;
+    private String username;
 
 
     @FXML
@@ -40,6 +41,7 @@ public class selectLevelScreenController {
         Parent root = fxmlLoader.load();
         gameScreenController controller = fxmlLoader.<gameScreenController>getController();
         controller.setLevel(1);
+        controller.setUsername(username);
         level1Btn.getScene().setRoot(root);
     }
 
@@ -49,6 +51,7 @@ public class selectLevelScreenController {
         Parent root = fxmlLoader.load();
         gameScreenController controller = fxmlLoader.<gameScreenController>getController();
         controller.setLevel(2);
+        controller.setUsername(username);
         level1Btn.getScene().setRoot(root);
     }
 
@@ -58,6 +61,7 @@ public class selectLevelScreenController {
         Parent root = fxmlLoader.load();
         gameScreenController controller = fxmlLoader.<gameScreenController>getController();
         controller.setLevel(3);
+        controller.setUsername(username);
         level1Btn.getScene().setRoot(root);
     }
 
@@ -67,6 +71,7 @@ public class selectLevelScreenController {
         Parent root = fxmlLoader.load();
         gameScreenController controller = fxmlLoader.<gameScreenController>getController();
         controller.setLevel(4);
+        controller.setUsername(username);
         level1Btn.getScene().setRoot(root);
     }
 
@@ -76,6 +81,7 @@ public class selectLevelScreenController {
         Parent root = fxmlLoader.load();
         gameScreenController controller = fxmlLoader.<gameScreenController>getController();
         controller.setLevel(5);
+        controller.setUsername(username);
         level1Btn.getScene().setRoot(root);
     }
 
@@ -90,4 +96,7 @@ public class selectLevelScreenController {
 
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
 }

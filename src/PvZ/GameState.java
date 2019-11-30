@@ -88,7 +88,31 @@ public class GameState implements Serializable {
 
     public void createGraphicObjects() throws URISyntaxException {
         createPlantBuyMenu();
-
+        for(int i = 0; i < 5; i++){
+            for(int j = 0; j < 9; j++){
+                Plant plant = lawnGrid.plantsGrid[i][j];
+                if(plant != null && plant.image == null){
+                    plant.createGraphicObject(baseAnchorPane);
+                }
+            }
+            ArrayList zombies = lawnGrid.zombieLanes[i];
+            for(Object zombie: zombies){
+                Zombie z = (Zombie) zombie;
+                if(z.image == null){
+                    z.createGraphicObject(baseAnchorPane);
+                }
+            }
+            ArrayList peas = lawnGrid.peaLanes[i];
+            for(Object p: peas){
+                Pea z = (Pea) p;
+                if(z.image == null){
+                    z.createGraphicObject(baseAnchorPane);
+                }
+            }
+            if(lawnGrid.lawnmowersUsed[i]){
+                lawnGrid.lawnmowers[i].setX(1000);
+            }
+        }
     }
 
     public Pane getMainPane(){
@@ -159,5 +183,16 @@ public class GameState implements Serializable {
         System.out.println("x " + x + ", y " + y);
         pea.setX(x);
         pea.setY(y);
+    }
+
+    public void setMainPane(AnchorPane gameScreenPane) {
+        this.baseAnchorPane = gameScreenPane;
+    }
+
+    public void setTransientAttributes(AnchorPane gameScreenPane, Label timer, Label score, ImageView[] lawnmowers){
+        this.baseAnchorPane = gameScreenPane;
+        this.timer = timer;
+        this.score = score;
+        this.lawnGrid.lawnmowers = lawnmowers;
     }
 }

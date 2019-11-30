@@ -32,6 +32,7 @@ public class StartMenuController {
 
     @FXML
     private ImageView start_btn;
+    private String username = "default";
 
     @FXML
     void exitBtnClicked(MouseEvent event) {
@@ -40,13 +41,19 @@ public class StartMenuController {
 
     @FXML
     void loadGameClicked(MouseEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("loadMenu.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("loadMenu.fxml"));
+        Parent root = fxmlLoader.load();
+        loadMenuController controller = fxmlLoader.<loadMenuController>getController();
+        controller.setUsername(username);
         load_btn.getScene().setRoot(root);
     }
 
     @FXML
     void selectLevelClicked(MouseEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("selectLevelScreen.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("selectLevelScreen.fxml"));
+        Parent root = fxmlLoader.load();
+        selectLevelScreenController controller = fxmlLoader.<selectLevelScreenController>getController();
+        controller.setUsername(username);
         load_btn.getScene().setRoot(root);
     }
 
@@ -56,6 +63,7 @@ public class StartMenuController {
         Parent root = fxmlLoader.load();
         gameScreenController controller = fxmlLoader.<gameScreenController>getController();
         controller.setLevel(1);
+        controller.setUsername(username);
         start_btn.getScene().setRoot(root);
     }
 

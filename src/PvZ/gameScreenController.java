@@ -31,6 +31,8 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.sql.Timestamp;
+
 public class gameScreenController {
 
     @FXML
@@ -77,7 +79,8 @@ public class gameScreenController {
     int counter = 1;
     @FXML
     void saveGameClicked(MouseEvent event) throws IOException{
-        FileOutputStream file = new FileOutputStream(username + counter + ".pvz");
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        FileOutputStream file = new FileOutputStream(username + timestamp.getTime() + ".pvz");
         ObjectOutputStream out = new ObjectOutputStream(file);
         try {
             out.writeObject(gameState);

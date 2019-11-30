@@ -6,7 +6,7 @@ import javafx.scene.image.Image;
 import java.io.Serializable;
 import java.net.URISyntaxException;
 
-public abstract class Plant extends Character implements Serializable {
+public abstract class Plant extends Character implements Serializable{
     protected int token_cost, time_cost;
     public Plant(int HP,int attack,int token,int time,double x,double y,String img){
         super(HP,attack,img,x,y);

@@ -31,6 +31,7 @@ public class GameState implements Serializable {
     ZombieMover zombieMover;
     PeaSpawner peaSpawner;
     PeaMover peaMover;
+    SkySunSpawner skySunSpawner;
     CherryBombExecuter cherryBombExecuter;
     SunflowerSunSpawner sunflowerSunSpawner;
     ArrayList<Updatable> observers;
@@ -49,6 +50,7 @@ public class GameState implements Serializable {
         zombieSpawner = new ZombieSpawner(this);
         zombieMover = new ZombieMover(this);
         peaSpawner = new PeaSpawner(this);
+        skySunSpawner = new SkySunSpawner(this);
         sunflowerSunSpawner = new SunflowerSunSpawner(this);
         peaMover = new PeaMover(this);
         observers.add(zombieSpawner);
@@ -57,6 +59,7 @@ public class GameState implements Serializable {
         observers.add(sunflowerSunSpawner);
         observers.add(peaMover);
         observers.add(cherryBombExecuter);
+        observers.add(skySunSpawner);
         System.out.println("Init " + timerLeft);
         mainAnchor.setOnMouseClicked(e -> {
             if(mouseInputState == MouseInputStates.PLANTSET){

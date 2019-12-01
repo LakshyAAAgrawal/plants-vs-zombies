@@ -185,8 +185,18 @@ public class gameScreenController {
                         controller.setUsername(username);
                         scrollPane.getScene().setRoot(root);
                     }catch(GameLostException e){
-                        System.out.println("You Lost");
                         this.stop();
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("game_lost.fxml"));
+                        Parent root = null;
+                        try {
+                            root = fxmlLoader.load();
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        }
+                        gameLostController controller = fxmlLoader.<gameLostController>getController();
+                        controller.setLevel(((level+1) % 5) + 1);
+                        controller.setUsername(username);
+                        scrollPane.getScene().setRoot(root);
                     }catch(Exception e){
                         e.printStackTrace();
                     }

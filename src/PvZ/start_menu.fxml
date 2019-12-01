@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -36,6 +37,7 @@
             <Image url="@exit_btn.png" />
           </image>
         </ImageView>
+        <TextField id="username" fx:id="usernameText" focusTraversable="false" layoutX="300.0" layoutY="529.0" onKeyReleased="#updateUsername" prefHeight="31.0" prefWidth="200.0" promptText="Username: Rob&lt;default&gt;" />
       </children>
     </AnchorPane>
   </children>

@@ -1,12 +1,15 @@
 package PvZ;
 
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 
@@ -25,6 +28,9 @@ public class StartMenuController {
     private ImageView exit_btn;
 
     @FXML
+    private TextField usernameText;
+
+    @FXML
     private ImageView load_btn;
 
     @FXML
@@ -32,7 +38,17 @@ public class StartMenuController {
 
     @FXML
     private ImageView start_btn;
-    private String username = "default";
+    private String username = "Rob";
+
+    @FXML
+    void updateUsername(KeyEvent event){
+        username = usernameText.getText();
+        if(!username.matches("[a-zA-Z]+")){
+            usernameText.setText("");
+            username = "Rob";
+        }
+        System.out.println(username);
+    }
 
     @FXML
     void exitBtnClicked(MouseEvent event) {

@@ -172,9 +172,18 @@ public class gameScreenController {
                     try {
                         gameState.advance_one_frame();
                     }catch(GameWonException e){
-                        System.out.println("You won");
-                        System.out.println("You got " + e.numSunTokens + " Points!!");
                         this.stop();
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("game_won.fxml"));
+                        Parent root = null;
+                        try {
+                            root = fxmlLoader.load();
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        }
+                        gameWonController controller = fxmlLoader.<gameWonController>getController();
+                        controller.setLevel(((level+1) % 5) + 1);
+                        controller.setUsername(username);
+                        scrollPane.getScene().setRoot(root);
                     }catch(GameLostException e){
                         System.out.println("You Lost");
                         this.stop();

@@ -36,7 +36,7 @@ public class GameState implements Serializable {
     SunflowerSunSpawner sunflowerSunSpawner;
     ArrayList<Updatable> observers;
     private MouseInputStates mouseInputState = MouseInputStates.NORMAL;
-
+    private static final long SerialVersionUID = 11l;
     public GameState(AnchorPane mainAnchor, int level, Label timer, Label score, ImageView[] lawnmowers){
         this.baseAnchorPane = mainAnchor;
         this.level = level;

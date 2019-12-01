@@ -2,6 +2,7 @@ package PvZ;
 
 import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -30,6 +31,7 @@ public class GameState implements Serializable {
     ZombieMover zombieMover;
     PeaSpawner peaSpawner;
     PeaMover peaMover;
+    CherryBombExecuter cherryBombExecuter;
     SunflowerSunSpawner sunflowerSunSpawner;
     ArrayList<Updatable> observers;
     private MouseInputStates mouseInputState = MouseInputStates.NORMAL;
@@ -43,6 +45,7 @@ public class GameState implements Serializable {
         this.score = score;
         this.timerLeft = ((level - 1)*30)*60 + 60*60;
         this.observers = new ArrayList<Updatable>();
+        cherryBombExecuter = new CherryBombExecuter(this);
         zombieSpawner = new ZombieSpawner(this);
         zombieMover = new ZombieMover(this);
         peaSpawner = new PeaSpawner(this);
@@ -53,6 +56,7 @@ public class GameState implements Serializable {
         observers.add(peaSpawner);
         observers.add(sunflowerSunSpawner);
         observers.add(peaMover);
+        observers.add(cherryBombExecuter);
         System.out.println("Init " + timerLeft);
         mainAnchor.setOnMouseClicked(e -> {
             if(mouseInputState == MouseInputStates.PLANTSET){

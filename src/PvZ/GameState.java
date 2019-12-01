@@ -232,4 +232,8 @@ public class GameState implements Serializable {
             }
         });
     }
+
+    public void update_sunTokens() {
+        numSunTokens+=25;
+    }
 }
